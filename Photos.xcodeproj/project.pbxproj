@@ -16,14 +16,15 @@
 		70A549DF16AC9299009DC711 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549DE16AC9299009DC711 /* Default.png */; };
 		70A549E116AC9299009DC711 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549E016AC9299009DC711 /* Default@2x.png */; };
 		70A549E316AC9299009DC711 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549E216AC9299009DC711 /* Default-568h@2x.png */; };
-		70A549E616AC9299009DC711 /* LMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A549E516AC9299009DC711 /* LMFirstViewController.m */; };
 		70A549E816AC9299009DC711 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549E716AC9299009DC711 /* first.png */; };
 		70A549EA16AC929A009DC711 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549E916AC9299009DC711 /* first@2x.png */; };
-		70A549ED16AC929A009DC711 /* LMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A549EC16AC929A009DC711 /* LMSecondViewController.m */; };
 		70A549EF16AC929A009DC711 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549EE16AC929A009DC711 /* second.png */; };
 		70A549F116AC929A009DC711 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549F016AC929A009DC711 /* second@2x.png */; };
-		70A549F416AC929A009DC711 /* LMFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A549F216AC929A009DC711 /* LMFirstViewController.xib */; };
-		70A549F716AC929A009DC711 /* LMSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A549F516AC929A009DC711 /* LMSecondViewController.xib */; };
+		70A54A0416AC9B45009DC711 /* LMAlbumBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0316AC9B45009DC711 /* LMAlbumBrowserViewController.m */; };
+		70A54A0716AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */; };
+		70A54A0A16ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0916ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m */; };
+		70A54A0D16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0C16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m */; };
+		70D02F3F16ACAEBE00D0E35F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,16 +41,19 @@
 		70A549DE16AC9299009DC711 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		70A549E016AC9299009DC711 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		70A549E216AC9299009DC711 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		70A549E416AC9299009DC711 /* LMFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMFirstViewController.h; sourceTree = "<group>"; };
-		70A549E516AC9299009DC711 /* LMFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMFirstViewController.m; sourceTree = "<group>"; };
 		70A549E716AC9299009DC711 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		70A549E916AC9299009DC711 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		70A549EB16AC929A009DC711 /* LMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSecondViewController.h; sourceTree = "<group>"; };
-		70A549EC16AC929A009DC711 /* LMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMSecondViewController.m; sourceTree = "<group>"; };
 		70A549EE16AC929A009DC711 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		70A549F016AC929A009DC711 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		70A549F316AC929A009DC711 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LMFirstViewController.xib; sourceTree = "<group>"; };
-		70A549F616AC929A009DC711 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LMSecondViewController.xib; sourceTree = "<group>"; };
+		70A54A0216AC9B45009DC711 /* LMAlbumBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlbumBrowserViewController.h; sourceTree = "<group>"; };
+		70A54A0316AC9B45009DC711 /* LMAlbumBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlbumBrowserViewController.m; sourceTree = "<group>"; };
+		70A54A0516AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlbumNavigationControllerViewController.h; sourceTree = "<group>"; };
+		70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlbumNavigationControllerViewController.m; sourceTree = "<group>"; };
+		70A54A0816ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPhotoStreamBrowserViewController.h; sourceTree = "<group>"; };
+		70A54A0916ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPhotoStreamBrowserViewController.m; sourceTree = "<group>"; };
+		70A54A0B16ACA127009DC711 /* LMPhotoStreamNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPhotoStreamNavigationViewController.h; sourceTree = "<group>"; };
+		70A54A0C16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPhotoStreamNavigationViewController.m; sourceTree = "<group>"; };
+		70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70D02F3F16ACAEBE00D0E35F /* AssetsLibrary.framework in Frameworks */,
 				70A549CD16AC9299009DC711 /* UIKit.framework in Frameworks */,
 				70A549CF16AC9299009DC711 /* Foundation.framework in Frameworks */,
 				70A549D116AC9299009DC711 /* CoreGraphics.framework in Frameworks */,
@@ -86,6 +91,7 @@
 		70A549CB16AC9299009DC711 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */,
 				70A549CC16AC9299009DC711 /* UIKit.framework */,
 				70A549CE16AC9299009DC711 /* Foundation.framework */,
 				70A549D016AC9299009DC711 /* CoreGraphics.framework */,
@@ -98,16 +104,8 @@
 			children = (
 				70A549DB16AC9299009DC711 /* LMAppDelegate.h */,
 				70A549DC16AC9299009DC711 /* LMAppDelegate.m */,
-				70A549E416AC9299009DC711 /* LMFirstViewController.h */,
-				70A549E516AC9299009DC711 /* LMFirstViewController.m */,
-				70A549E716AC9299009DC711 /* first.png */,
-				70A549E916AC9299009DC711 /* first@2x.png */,
-				70A549EB16AC929A009DC711 /* LMSecondViewController.h */,
-				70A549EC16AC929A009DC711 /* LMSecondViewController.m */,
-				70A549EE16AC929A009DC711 /* second.png */,
-				70A549F016AC929A009DC711 /* second@2x.png */,
-				70A549F216AC929A009DC711 /* LMFirstViewController.xib */,
-				70A549F516AC929A009DC711 /* LMSecondViewController.xib */,
+				70A549FD16AC9413009DC711 /* First */,
+				70A549FE16AC9427009DC711 /* Second */,
 				70A549D316AC9299009DC711 /* Supporting Files */,
 			);
 			path = Photos;
@@ -125,6 +123,32 @@
 				70A549E216AC9299009DC711 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70A549FD16AC9413009DC711 /* First */ = {
+			isa = PBXGroup;
+			children = (
+				70A54A0516AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.h */,
+				70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */,
+				70A54A0216AC9B45009DC711 /* LMAlbumBrowserViewController.h */,
+				70A54A0316AC9B45009DC711 /* LMAlbumBrowserViewController.m */,
+				70A549E716AC9299009DC711 /* first.png */,
+				70A549E916AC9299009DC711 /* first@2x.png */,
+			);
+			name = First;
+			sourceTree = "<group>";
+		};
+		70A549FE16AC9427009DC711 /* Second */ = {
+			isa = PBXGroup;
+			children = (
+				70A54A0B16ACA127009DC711 /* LMPhotoStreamNavigationViewController.h */,
+				70A54A0C16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m */,
+				70A54A0816ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.h */,
+				70A54A0916ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m */,
+				70A549EE16AC929A009DC711 /* second.png */,
+				70A549F016AC929A009DC711 /* second@2x.png */,
+			);
+			name = Second;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,8 +211,6 @@
 				70A549EA16AC929A009DC711 /* first@2x.png in Resources */,
 				70A549EF16AC929A009DC711 /* second.png in Resources */,
 				70A549F116AC929A009DC711 /* second@2x.png in Resources */,
-				70A549F416AC929A009DC711 /* LMFirstViewController.xib in Resources */,
-				70A549F716AC929A009DC711 /* LMSecondViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,8 +223,10 @@
 			files = (
 				70A549D916AC9299009DC711 /* main.m in Sources */,
 				70A549DD16AC9299009DC711 /* LMAppDelegate.m in Sources */,
-				70A549E616AC9299009DC711 /* LMFirstViewController.m in Sources */,
-				70A549ED16AC929A009DC711 /* LMSecondViewController.m in Sources */,
+				70A54A0416AC9B45009DC711 /* LMAlbumBrowserViewController.m in Sources */,
+				70A54A0716AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m in Sources */,
+				70A54A0A16ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m in Sources */,
+				70A54A0D16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,22 +239,6 @@
 				70A549D616AC9299009DC711 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		70A549F216AC929A009DC711 /* LMFirstViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70A549F316AC929A009DC711 /* en */,
-			);
-			name = LMFirstViewController.xib;
-			sourceTree = "<group>";
-		};
-		70A549F516AC929A009DC711 /* LMSecondViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70A549F616AC929A009DC711 /* en */,
-			);
-			name = LMSecondViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -292,6 +300,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photos/Photos-Prefix.pch";
 				INFOPLIST_FILE = "Photos/Photos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -303,6 +312,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photos/Photos-Prefix.pch";
 				INFOPLIST_FILE = "Photos/Photos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -327,6 +337,7 @@
 				70A549FC16AC929A009DC711 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

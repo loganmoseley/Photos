@@ -7,21 +7,24 @@
 //
 
 #import "LMAppDelegate.h"
-
-#import "LMFirstViewController.h"
-
-#import "LMSecondViewController.h"
+#import "LMAlbumNavigationControllerViewController.h"
+#import "LMAlbumBrowserViewController.h"
+#import "LMPhotoStreamNavigationViewController.h"
+#import "LMPhotoStreamBrowserViewController.h"
 
 @implementation LMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [application setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[LMFirstViewController alloc] initWithNibName:@"LMFirstViewController" bundle:nil];
-    UIViewController *viewController2 = [[LMSecondViewController alloc] initWithNibName:@"LMSecondViewController" bundle:nil];
+    UIViewController *viewController1 = [[LMAlbumBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
+    UIViewController *viewController2 = [[LMPhotoStreamBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *navController1 = [[LMAlbumNavigationControllerViewController alloc] initWithRootViewController:viewController1];
+    UINavigationController *navController2 = [[LMPhotoStreamNavigationViewController alloc] initWithRootViewController:viewController2];
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[viewController1, viewController2];
+    self.tabBarController.viewControllers = @[navController1, navController2];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
