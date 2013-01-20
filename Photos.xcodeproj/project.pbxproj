@@ -20,7 +20,7 @@
 		70A549EA16AC929A009DC711 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549E916AC9299009DC711 /* first@2x.png */; };
 		70A549EF16AC929A009DC711 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549EE16AC929A009DC711 /* second.png */; };
 		70A549F116AC929A009DC711 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549F016AC929A009DC711 /* second@2x.png */; };
-		70A54A0416AC9B45009DC711 /* LMAlbumBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0316AC9B45009DC711 /* LMAlbumBrowserViewController.m */; };
+		70A54A0416AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0316AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m */; };
 		70A54A0716AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */; };
 		70A54A0A16ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0916ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m */; };
 		70A54A0D16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0C16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m */; };
@@ -45,8 +45,8 @@
 		70A549E916AC9299009DC711 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		70A549EE16AC929A009DC711 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		70A549F016AC929A009DC711 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		70A54A0216AC9B45009DC711 /* LMAlbumBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlbumBrowserViewController.h; sourceTree = "<group>"; };
-		70A54A0316AC9B45009DC711 /* LMAlbumBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlbumBrowserViewController.m; sourceTree = "<group>"; };
+		70A54A0216AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlbumGroupsBrowserViewController.h; sourceTree = "<group>"; };
+		70A54A0316AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlbumGroupsBrowserViewController.m; sourceTree = "<group>"; };
 		70A54A0516AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlbumNavigationControllerViewController.h; sourceTree = "<group>"; };
 		70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlbumNavigationControllerViewController.m; sourceTree = "<group>"; };
 		70A54A0816ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPhotoStreamBrowserViewController.h; sourceTree = "<group>"; };
@@ -130,8 +130,8 @@
 			children = (
 				70A54A0516AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.h */,
 				70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */,
-				70A54A0216AC9B45009DC711 /* LMAlbumBrowserViewController.h */,
-				70A54A0316AC9B45009DC711 /* LMAlbumBrowserViewController.m */,
+				70A54A0216AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.h */,
+				70A54A0316AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m */,
 				70A549E716AC9299009DC711 /* first.png */,
 				70A549E916AC9299009DC711 /* first@2x.png */,
 			);
@@ -223,7 +223,7 @@
 			files = (
 				70A549D916AC9299009DC711 /* main.m in Sources */,
 				70A549DD16AC9299009DC711 /* LMAppDelegate.m in Sources */,
-				70A54A0416AC9B45009DC711 /* LMAlbumBrowserViewController.m in Sources */,
+				70A54A0416AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m in Sources */,
 				70A54A0716AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m in Sources */,
 				70A54A0A16ACA0DF009DC711 /* LMPhotoStreamBrowserViewController.m in Sources */,
 				70A54A0D16ACA127009DC711 /* LMPhotoStreamNavigationViewController.m in Sources */,

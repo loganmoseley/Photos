@@ -1,5 +1,5 @@
 //
-//  LMAlbumBrowserViewController.h
+//  LMAlbumGroupsBrowserViewController.h
 //  Photos
 //
 //  Created by Logan Moseley on 1/20/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface LMAlbumBrowserViewController : UITableViewController
+@interface LMAlbumGroupsBrowserViewController : UITableViewController
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) NSMutableArray *assetsGroups;
 @end

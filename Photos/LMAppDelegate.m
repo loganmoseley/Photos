@@ -8,7 +8,7 @@
 
 #import "LMAppDelegate.h"
 #import "LMAlbumNavigationControllerViewController.h"
-#import "LMAlbumBrowserViewController.h"
+#import "LMAlbumGroupsBrowserViewController.h"
 #import "LMPhotoStreamNavigationViewController.h"
 #import "LMPhotoStreamBrowserViewController.h"
 
@@ -19,7 +19,7 @@
     [application setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[LMAlbumBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
+    UIViewController *viewController1 = [[LMAlbumGroupsBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
     UIViewController *viewController2 = [[LMPhotoStreamBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navController1 = [[LMAlbumNavigationControllerViewController alloc] initWithRootViewController:viewController1];
     UINavigationController *navController2 = [[LMPhotoStreamNavigationViewController alloc] initWithRootViewController:viewController2];
