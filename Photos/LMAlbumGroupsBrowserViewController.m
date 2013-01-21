@@ -7,6 +7,7 @@
 //
 
 #import "LMAlbumGroupsBrowserViewController.h"
+#import "LMAssetsGroupBrowserViewController.h"
 
 @interface LMAlbumGroupsBrowserViewController ()
 
@@ -97,9 +98,17 @@
     if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
     ALAssetsGroup *group = self.assetsGroups[indexPath.row];
-    cell.imageView.image = [UIImage imageWithCGImage:[group posterImage]];
-    cell.textLabel.text = [group valueForProperty:ALAssetsGroupPropertyName];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    NSString *name = [group valueForProperty:ALAssetsGroupPropertyName];
+    NSString *nameAndCount = [name stringByAppendingFormat:@" (%i)", [group numberOfAssets]];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:nameAndCount];
+    [attributedText setAttributes:@{ NSForegroundColorAttributeName: [UIColor lightGrayColor] }
+                            range:NSMakeRange(name.length, nameAndCount.length-name.length)];
+    
+    [cell.textLabel setAttributedText:attributedText];
+    [cell.textLabel setFont:nil];
+    [cell.imageView setImage:[UIImage imageWithCGImage:[group posterImage]]];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     return cell;
 }
@@ -147,13 +156,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    LMAssetsGroupBrowserViewController *albumBrowser = [LMAssetsGroupBrowserViewController browserWithAssetsGroup:self.assetsGroups[indexPath.row]];
+    [self.navigationController pushViewController:albumBrowser animated:YES];
 }
 
 @end
