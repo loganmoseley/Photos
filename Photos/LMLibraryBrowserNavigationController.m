@@ -1,26 +1,26 @@
 //
-//  LMAlbumNavigationControllerViewController.m
+//  LMLibraryBrowserNavigationController.m
 //  Photos
 //
 //  Created by Logan Moseley on 1/20/13.
 //  Copyright (c) 2013 Logan Moseley. All rights reserved.
 //
 
-#import "LMAlbumNavigationControllerViewController.h"
-#import "LMAlbumGroupsBrowserViewController.h"
+#import "LMLibraryBrowserNavigationController.h"
+#import "LMLibraryBrowserViewController.h"
 
-@interface LMAlbumNavigationControllerViewController ()
+@interface LMLibraryBrowserNavigationController ()
 
 @end
 
-@implementation LMAlbumNavigationControllerViewController
+@implementation LMLibraryBrowserNavigationController
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController
 {
     self = [super initWithRootViewController:rootViewController];
     if (self) {
         self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-        LMAlbumGroupsBrowserViewController *controller = (LMAlbumGroupsBrowserViewController *)rootViewController;
+        LMLibraryBrowserViewController *controller = (LMLibraryBrowserViewController *)rootViewController;
         if ([controller respondsToSelector:@selector(imageName)]) {
             NSString *imageName = controller.imageName;
             self.tabBarItem.image = imageName ? [UIImage imageNamed:imageName] : nil;

@@ -22,8 +22,8 @@
 		70A549EA16AC929A009DC711 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549E916AC9299009DC711 /* first@2x.png */; };
 		70A549EF16AC929A009DC711 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549EE16AC929A009DC711 /* second.png */; };
 		70A549F116AC929A009DC711 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A549F016AC929A009DC711 /* second@2x.png */; };
-		70A54A0416AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0316AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m */; };
-		70A54A0716AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */; };
+		70A54A0416AC9B45009DC711 /* LMLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0316AC9B45009DC711 /* LMLibraryBrowserViewController.m */; };
+		70A54A0716AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */; };
 		70D02F3F16ACAEBE00D0E35F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */; };
 		70D02F4616ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */; };
 /* End PBXBuildFile section */
@@ -49,10 +49,10 @@
 		70A549E916AC9299009DC711 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		70A549EE16AC929A009DC711 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		70A549F016AC929A009DC711 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		70A54A0216AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlbumGroupsBrowserViewController.h; sourceTree = "<group>"; };
-		70A54A0316AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlbumGroupsBrowserViewController.m; sourceTree = "<group>"; };
-		70A54A0516AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlbumNavigationControllerViewController.h; sourceTree = "<group>"; };
-		70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlbumNavigationControllerViewController.m; sourceTree = "<group>"; };
+		70A54A0216AC9B45009DC711 /* LMLibraryBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMLibraryBrowserViewController.h; sourceTree = "<group>"; };
+		70A54A0316AC9B45009DC711 /* LMLibraryBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMLibraryBrowserViewController.m; sourceTree = "<group>"; };
+		70A54A0516AC9FD4009DC711 /* LMLibraryBrowserNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMLibraryBrowserNavigationController.h; sourceTree = "<group>"; };
+		70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMLibraryBrowserNavigationController.m; sourceTree = "<group>"; };
 		70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		70D02F4416ACB89500D0E35F /* LMAssetsGroupBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAssetsGroupBrowserViewController.h; sourceTree = "<group>"; };
 		70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAssetsGroupBrowserViewController.m; sourceTree = "<group>"; };
@@ -122,10 +122,10 @@
 			children = (
 				70A549DB16AC9299009DC711 /* LMAppDelegate.h */,
 				70A549DC16AC9299009DC711 /* LMAppDelegate.m */,
-				70A54A0516AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.h */,
-				70A54A0616AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m */,
-				70A54A0216AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.h */,
-				70A54A0316AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m */,
+				70A54A0516AC9FD4009DC711 /* LMLibraryBrowserNavigationController.h */,
+				70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */,
+				70A54A0216AC9B45009DC711 /* LMLibraryBrowserViewController.h */,
+				70A54A0316AC9B45009DC711 /* LMLibraryBrowserViewController.m */,
 				70D02F4416ACB89500D0E35F /* LMAssetsGroupBrowserViewController.h */,
 				70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */,
 				7091597B16ACC0B2001B1BF8 /* LMAssetThumbnailCell.h */,
@@ -219,8 +219,8 @@
 			files = (
 				70A549D916AC9299009DC711 /* main.m in Sources */,
 				70A549DD16AC9299009DC711 /* LMAppDelegate.m in Sources */,
-				70A54A0416AC9B45009DC711 /* LMAlbumGroupsBrowserViewController.m in Sources */,
-				70A54A0716AC9FD4009DC711 /* LMAlbumNavigationControllerViewController.m in Sources */,
+				70A54A0416AC9B45009DC711 /* LMLibraryBrowserViewController.m in Sources */,
+				70A54A0716AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m in Sources */,
 				70D02F4616ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m in Sources */,
 				7091597D16ACC0B2001B1BF8 /* LMAssetThumbnailCell.m in Sources */,
 			);

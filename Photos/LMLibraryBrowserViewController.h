@@ -1,5 +1,5 @@
 //
-//  LMAlbumGroupsBrowserViewController.h
+//  LMLibraryBrowserViewController.h
 //  Photos
 //
 //  Created by Logan Moseley on 1/20/13.
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, LMAssetLibraryScope) {
     LMStreamLibraryScope,
 };
 
-@interface LMAlbumGroupsBrowserViewController : UITableViewController
+@interface LMLibraryBrowserViewController : UITableViewController
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) NSMutableArray *assetsGroups;
 @property (nonatomic) LMAssetLibraryScope libraryScope;

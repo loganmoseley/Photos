@@ -1,23 +1,23 @@
 //
-//  LMAlbumGroupsBrowserViewController.m
+//  LMLibraryBrowserViewController.m
 //  Photos
 //
 //  Created by Logan Moseley on 1/20/13.
 //  Copyright (c) 2013 Logan Moseley. All rights reserved.
 //
 
-#import "LMAlbumGroupsBrowserViewController.h"
+#import "LMLibraryBrowserViewController.h"
 #import "LMAssetsGroupBrowserViewController.h"
 
-@interface LMAlbumGroupsBrowserViewController ()
+@interface LMLibraryBrowserViewController ()
 
 @end
 
-@implementation LMAlbumGroupsBrowserViewController
+@implementation LMLibraryBrowserViewController
 
 + (instancetype)browserWithLibraryScope:(LMAssetLibraryScope)scope
 {
-    LMAlbumGroupsBrowserViewController *browser = [[LMAlbumGroupsBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
+    LMLibraryBrowserViewController *browser = [[LMLibraryBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
     switch (scope) {
         case LMLocalLibraryScope:
             [browser initForLocal];

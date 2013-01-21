@@ -7,8 +7,8 @@
 //
 
 #import "LMAppDelegate.h"
-#import "LMAlbumNavigationControllerViewController.h"
-#import "LMAlbumGroupsBrowserViewController.h"
+#import "LMLibraryBrowserNavigationController.h"
+#import "LMLibraryBrowserViewController.h"
 
 @implementation LMAppDelegate
 
@@ -17,10 +17,10 @@
     [application setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [LMAlbumGroupsBrowserViewController browserWithLibraryScope:LMLocalLibraryScope];
-    UIViewController *viewController2 = [LMAlbumGroupsBrowserViewController browserWithLibraryScope:LMStreamLibraryScope];
-    UINavigationController *navController1 = [[LMAlbumNavigationControllerViewController alloc] initWithRootViewController:viewController1];
-    UINavigationController *navController2 = [[LMAlbumNavigationControllerViewController alloc] initWithRootViewController:viewController2];
+    UIViewController *viewController1 = [LMLibraryBrowserViewController browserWithLibraryScope:LMLocalLibraryScope];
+    UIViewController *viewController2 = [LMLibraryBrowserViewController browserWithLibraryScope:LMStreamLibraryScope];
+    UINavigationController *navController1 = [[LMLibraryBrowserNavigationController alloc] initWithRootViewController:viewController1];
+    UINavigationController *navController2 = [[LMLibraryBrowserNavigationController alloc] initWithRootViewController:viewController2];
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[navController1, navController2];
     self.window.rootViewController = self.tabBarController;
