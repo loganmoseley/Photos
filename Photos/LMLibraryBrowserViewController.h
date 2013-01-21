@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, LMAssetLibraryScope) {
     LMStreamLibraryScope,
 };
 
-@interface LMLibraryBrowserViewController : UITableViewController
+@interface LMLibraryBrowserViewController : UITableViewController <UIAlertViewDelegate>
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) NSMutableArray *assetsGroups;
 @property (nonatomic) LMAssetLibraryScope libraryScope;
