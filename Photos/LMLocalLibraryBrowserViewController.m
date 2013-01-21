@@ -77,7 +77,84 @@
 
 - (void)editTapped:(UIBarButtonItem *)sender
 {
-    NSLog(@"edit");
+    BOOL isNowEditing = !self.tableView.isEditing;
+    [self.tableView setEditing:isNowEditing animated:YES];
+    
+    UIBarButtonSystemItem item = isNowEditing ? UIBarButtonSystemItemDone : UIBarButtonSystemItemEdit;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:self action:@selector(editTapped:)];
+    if (isNowEditing) {
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.assetsGroups.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.assetsGroups.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger rows = [super tableView:tableView numberOfRowsInSection:section];
+    rows += tableView.isEditing ? 1 : 0;
+    return rows;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.isEditing && indexPath.row == self.assetsGroups.count) {
+        static NSString *const informationIdentifier = @"kTableViewInfomationCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:informationIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:informationIdentifier];
+        }
+        [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+        [cell.textLabel setText:NSLocalizedString(@"Only Apple's Photos app can delete albums.", @"Only Apple's Photos app can delete albums.")];
+        [cell.textLabel setTextColor:[UIColor lightGrayColor]];
+        [cell.textLabel setFont:nil];
+        [cell.textLabel setNumberOfLines:3];
+        return cell;
+    } else {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row > 0 && indexPath.row < self.assetsGroups.count;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+    NSInteger from = fromIndexPath.row;
+    NSInteger to = toIndexPath.row;
+    id a = [self.assetsGroups objectAtIndex:from];
+    [self.assetsGroups removeObjectAtIndex:from];
+    [self.assetsGroups insertObject:a atIndex:to];
+}
+
+
+
+#pragma mark - Table view delegate
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleNone;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    if (proposedDestinationIndexPath.row == 0 ||
+        proposedDestinationIndexPath.row == self.assetsGroups.count) {
+        return sourceIndexPath;
+    } else {
+        return proposedDestinationIndexPath;
+    }
 }
 
 @end
