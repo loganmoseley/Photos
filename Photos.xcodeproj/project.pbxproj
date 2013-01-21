@@ -40,6 +40,7 @@
 		70E05EA016AD2B4300F1EC4E /* PSTGridLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9216AD2B4300F1EC4E /* PSTGridLayoutItem.m */; };
 		70E05EA116AD2B4300F1EC4E /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9416AD2B4300F1EC4E /* PSTGridLayoutRow.m */; };
 		70E05EA216AD2B4300F1EC4E /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */; };
+		70E05EC416ADE76600F1EC4E /* LMAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05EC316ADE76500F1EC4E /* LMAppViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,8 @@
 		70E05E9416AD2B4300F1EC4E /* PSTGridLayoutRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutRow.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutRow.m; sourceTree = SOURCE_ROOT; };
 		70E05E9516AD2B4300F1EC4E /* PSTGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTGridLayoutSection.h; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutSection.h; sourceTree = SOURCE_ROOT; };
 		70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutSection.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutSection.m; sourceTree = SOURCE_ROOT; };
+		70E05EC216ADE76500F1EC4E /* LMAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppViewController.h; sourceTree = "<group>"; };
+		70E05EC316ADE76500F1EC4E /* LMAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAppViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +120,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		709159C516ACE2A9001B1BF8 /* Assets */ = {
+		709159C516ACE2A9001B1BF8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				70A549E716AC9299009DC711 /* first.png */,
@@ -128,7 +131,7 @@
 				70A549E016AC9299009DC711 /* Default@2x.png */,
 				70A549E216AC9299009DC711 /* Default-568h@2x.png */,
 			);
-			name = Assets;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		70A549BD16AC9299009DC711 = {
@@ -165,15 +168,12 @@
 			children = (
 				70A549DB16AC9299009DC711 /* LMAppDelegate.h */,
 				70A549DC16AC9299009DC711 /* LMAppDelegate.m */,
-				70A54A0516AC9FD4009DC711 /* LMLibraryBrowserNavigationController.h */,
-				70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */,
-				70E05E7016AD027500F1EC4E /* Library browser view controllers */,
-				70D02F4416ACB89500D0E35F /* LMAssetsGroupBrowserViewController.h */,
-				70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */,
-				7091597B16ACC0B2001B1BF8 /* LMAssetThumbnailCell.h */,
-				7091597C16ACC0B2001B1BF8 /* LMAssetThumbnailCell.m */,
+				70E05EC216ADE76500F1EC4E /* LMAppViewController.h */,
+				70E05EC316ADE76500F1EC4E /* LMAppViewController.m */,
+				70E05E7016AD027500F1EC4E /* Library browser */,
+				70E05EC116ADE72400F1EC4E /* Asset browser */,
 				70E05E7D16AD2B2A00F1EC4E /* PSTCollectionView */,
-				709159C516ACE2A9001B1BF8 /* Assets */,
+				709159C516ACE2A9001B1BF8 /* Resources */,
 				70A549D316AC9299009DC711 /* Supporting Files */,
 			);
 			path = Photos;
@@ -190,9 +190,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		70E05E7016AD027500F1EC4E /* Library browser view controllers */ = {
+		70E05E7016AD027500F1EC4E /* Library browser */ = {
 			isa = PBXGroup;
 			children = (
+				70A54A0516AC9FD4009DC711 /* LMLibraryBrowserNavigationController.h */,
+				70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */,
 				70A54A0216AC9B45009DC711 /* LMLibraryBrowserViewController.h */,
 				70A54A0316AC9B45009DC711 /* LMLibraryBrowserViewController.m */,
 				70E05E6A16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.h */,
@@ -200,7 +202,7 @@
 				70E05E6D16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.h */,
 				70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */,
 			);
-			name = "Library browser view controllers";
+			name = "Library browser";
 			sourceTree = "<group>";
 		};
 		70E05E7D16AD2B2A00F1EC4E /* PSTCollectionView */ = {
@@ -233,6 +235,17 @@
 				70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */,
 			);
 			name = PSTCollectionView;
+			sourceTree = "<group>";
+		};
+		70E05EC116ADE72400F1EC4E /* Asset browser */ = {
+			isa = PBXGroup;
+			children = (
+				70D02F4416ACB89500D0E35F /* LMAssetsGroupBrowserViewController.h */,
+				70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */,
+				7091597B16ACC0B2001B1BF8 /* LMAssetThumbnailCell.h */,
+				7091597C16ACC0B2001B1BF8 /* LMAssetThumbnailCell.m */,
+			);
+			name = "Asset browser";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +338,7 @@
 				70E05EA016AD2B4300F1EC4E /* PSTGridLayoutItem.m in Sources */,
 				70E05EA116AD2B4300F1EC4E /* PSTGridLayoutRow.m in Sources */,
 				70E05EA216AD2B4300F1EC4E /* PSTGridLayoutSection.m in Sources */,
+				70E05EC416ADE76600F1EC4E /* LMAppViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

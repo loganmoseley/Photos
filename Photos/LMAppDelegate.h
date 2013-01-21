@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LMAppViewController.h"
 
-@interface LMAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface LMAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) LMAppViewController *appController;
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
 @end

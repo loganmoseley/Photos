@@ -9,6 +9,10 @@
 #import "LMAppDelegate.h"
 #import "LMLibraryBrowserNavigationController.h"
 #import "LMLibraryBrowserViewController.h"
+#import "LMAppViewController.h"
+
+@interface LMAppDelegate ()
+@end
 
 @implementation LMAppDelegate
 
@@ -18,13 +22,19 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     UIViewController *viewController1 = [LMLibraryBrowserViewController browserWithLibraryScope:LMLocalLibraryScope];
-    UIViewController *viewController2 = [LMLibraryBrowserViewController browserWithLibraryScope:LMStreamLibraryScope];
     UINavigationController *navController1 = [[LMLibraryBrowserNavigationController alloc] initWithRootViewController:viewController1];
+    /*
+    UIViewController *viewController2 = [LMLibraryBrowserViewController browserWithLibraryScope:LMStreamLibraryScope];
     UINavigationController *navController2 = [[LMLibraryBrowserNavigationController alloc] initWithRootViewController:viewController2];
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[navController1, navController2];
     self.window.rootViewController = self.tabBarController;
+     */
+    self.appController = [[LMAppViewController alloc] initWithNibName:nil bundle:nil];
+    self.appController.viewController = navController1;
+    self.window.rootViewController = self.appController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
