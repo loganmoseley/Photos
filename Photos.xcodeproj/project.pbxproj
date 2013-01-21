@@ -26,6 +26,8 @@
 		70A54A0716AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */; };
 		70D02F3F16ACAEBE00D0E35F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */; };
 		70D02F4616ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */; };
+		70E05E6C16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */; };
+		70E05E6F16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,10 @@
 		70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		70D02F4416ACB89500D0E35F /* LMAssetsGroupBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAssetsGroupBrowserViewController.h; sourceTree = "<group>"; };
 		70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAssetsGroupBrowserViewController.m; sourceTree = "<group>"; };
+		70E05E6A16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMLocalLibraryBrowserViewController.h; sourceTree = "<group>"; };
+		70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMLocalLibraryBrowserViewController.m; sourceTree = "<group>"; };
+		70E05E6D16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStreamLibraryBrowserViewController.h; sourceTree = "<group>"; };
+		70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStreamLibraryBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +130,7 @@
 				70A549DC16AC9299009DC711 /* LMAppDelegate.m */,
 				70A54A0516AC9FD4009DC711 /* LMLibraryBrowserNavigationController.h */,
 				70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */,
-				70A54A0216AC9B45009DC711 /* LMLibraryBrowserViewController.h */,
-				70A54A0316AC9B45009DC711 /* LMLibraryBrowserViewController.m */,
+				70E05E7016AD027500F1EC4E /* Library browser view controllers */,
 				70D02F4416ACB89500D0E35F /* LMAssetsGroupBrowserViewController.h */,
 				70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */,
 				7091597B16ACC0B2001B1BF8 /* LMAssetThumbnailCell.h */,
@@ -145,6 +150,19 @@
 				70A549DA16AC9299009DC711 /* Photos-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70E05E7016AD027500F1EC4E /* Library browser view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				70A54A0216AC9B45009DC711 /* LMLibraryBrowserViewController.h */,
+				70A54A0316AC9B45009DC711 /* LMLibraryBrowserViewController.m */,
+				70E05E6A16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.h */,
+				70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */,
+				70E05E6D16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.h */,
+				70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */,
+			);
+			name = "Library browser view controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +241,8 @@
 				70A54A0716AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m in Sources */,
 				70D02F4616ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m in Sources */,
 				7091597D16ACC0B2001B1BF8 /* LMAssetThumbnailCell.m in Sources */,
+				70E05E6C16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m in Sources */,
+				70E05E6F16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
