@@ -15,15 +15,37 @@
 
 @implementation LMAlbumGroupsBrowserViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
++ (instancetype)browserWithLibraryScope:(LMAssetLibraryScope)scope
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        self.wantsFullScreenLayout = YES;
-        self.title = NSLocalizedString(@"Albums", @"Albums");
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction)];
+    LMAlbumGroupsBrowserViewController *browser = [[LMAlbumGroupsBrowserViewController alloc] initWithStyle:UITableViewStylePlain];
+    switch (scope) {
+        case LMLocalLibraryScope:
+            [browser initForLocal];
+            break;
+        case LMStreamLibraryScope:
+            [browser initForStream];
+            break;
+        default:
+            break;
     }
-    return self;
+    return browser;
+}
+
+- (void)initForLocal
+{
+    self.wantsFullScreenLayout = YES;
+    self.title = NSLocalizedString(@"Albums", @"Albums");
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction)];
+    self.libraryScope = LMLocalLibraryScope;
+    self.imageName = @"first";
+}
+
+- (void)initForStream
+{
+    self.wantsFullScreenLayout = YES;
+    self.title = NSLocalizedString(@"Photo Stream", @"Photo Stream");
+    self.libraryScope = LMStreamLibraryScope;
+    self.imageName = @"second";
 }
 
 - (void)viewDidLoad
@@ -56,10 +78,18 @@
         }
     };
     
-    NSUInteger savedPhotosGroup = ALAssetsGroupSavedPhotos;
-    NSUInteger albumsGroup = ALAssetsGroupAlbum;
-    [self.assetsLibrary enumerateGroupsWithTypes:savedPhotosGroup usingBlock:listGroupBlock failureBlock:failureBlock];
-    [self.assetsLibrary enumerateGroupsWithTypes:albumsGroup usingBlock:listGroupBlock failureBlock:failureBlock];
+    if (self.libraryScope == LMLocalLibraryScope)
+    {
+        NSUInteger savedPhotosGroup = ALAssetsGroupSavedPhotos;
+        NSUInteger albumsGroup = ALAssetsGroupAlbum;
+        [self.assetsLibrary enumerateGroupsWithTypes:savedPhotosGroup usingBlock:listGroupBlock failureBlock:failureBlock];
+        [self.assetsLibrary enumerateGroupsWithTypes:albumsGroup usingBlock:listGroupBlock failureBlock:failureBlock];
+    }
+    else if (self.libraryScope == LMStreamLibraryScope)
+    {
+        NSUInteger streamGroup = ALAssetsGroupPhotoStream;
+        [self.assetsLibrary enumerateGroupsWithTypes:streamGroup usingBlock:listGroupBlock failureBlock:failureBlock];
+    }
 }
 
 - (void)didReceiveMemoryWarning

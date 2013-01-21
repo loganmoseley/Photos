@@ -7,6 +7,7 @@
 //
 
 #import "LMAlbumNavigationControllerViewController.h"
+#import "LMAlbumGroupsBrowserViewController.h"
 
 @interface LMAlbumNavigationControllerViewController ()
 
@@ -14,12 +15,16 @@
 
 @implementation LMAlbumNavigationControllerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithRootViewController:(UIViewController *)rootViewController
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithRootViewController:rootViewController];
     if (self) {
         self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        LMAlbumGroupsBrowserViewController *controller = (LMAlbumGroupsBrowserViewController *)rootViewController;
+        if ([controller respondsToSelector:@selector(imageName)]) {
+            NSString *imageName = controller.imageName;
+            self.tabBarItem.image = imageName ? [UIImage imageNamed:imageName] : nil;
+        }
     }
     return self;
 }
