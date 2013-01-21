@@ -81,24 +81,20 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
         }
     };
     
-    if (self.libraryScope == LMLocalLibraryScope)
-    {
-        NSUInteger savedPhotosGroup = ALAssetsGroupSavedPhotos;
-        NSUInteger albumsGroup = ALAssetsGroupAlbum;
-        [self.assetsLibrary enumerateGroupsWithTypes:savedPhotosGroup usingBlock:listGroupBlock failureBlock:failureBlock];
-        [self.assetsLibrary enumerateGroupsWithTypes:albumsGroup usingBlock:listGroupBlock failureBlock:failureBlock];
-    }
-    else if (self.libraryScope == LMStreamLibraryScope)
-    {
-        NSUInteger streamGroup = ALAssetsGroupPhotoStream;
-        [self.assetsLibrary enumerateGroupsWithTypes:streamGroup usingBlock:listGroupBlock failureBlock:failureBlock];
+    NSOrderedSet *groups = [self assetsGroupTypes];
+    for (NSNumber *nsGroup in groups) {
+        ALAssetsGroupType group = [nsGroup unsignedIntegerValue];
+        [self.assetsLibrary enumerateGroupsWithTypes:group usingBlock:listGroupBlock failureBlock:failureBlock];
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if (_assetsGroupsDirty) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        _assetsGroupsDirty = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning

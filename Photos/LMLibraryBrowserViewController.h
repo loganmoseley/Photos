@@ -15,9 +15,14 @@ typedef NS_ENUM(NSInteger, LMAssetLibraryScope) {
 };
 
 @interface LMLibraryBrowserViewController : UITableViewController <UIAlertViewDelegate>
+{
+@protected
+    BOOL _assetsGroupsDirty;
+}
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) NSMutableArray *assetsGroups;
 @property (nonatomic) LMAssetLibraryScope libraryScope;
 @property (nonatomic, strong) NSString *imageName;
 + (instancetype)browserWithLibraryScope:(LMAssetLibraryScope)scope;
+- (NSOrderedSet *)assetsGroupTypes;
 @end

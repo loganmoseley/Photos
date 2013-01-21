@@ -27,6 +27,11 @@
     return self;
 }
 
+- (NSOrderedSet *)assetsGroupTypes
+{
+    return [NSOrderedSet orderedSetWithArray:@[@(ALAssetsGroupSavedPhotos), @(ALAssetsGroupAlbum)]];
+}
+
 
 
 #pragma Edit

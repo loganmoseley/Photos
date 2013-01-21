@@ -25,4 +25,9 @@
     return self;
 }
 
+- (NSOrderedSet *)assetsGroupTypes
+{
+    return [NSOrderedSet orderedSetWithArray:@[@(ALAssetsGroupPhotoStream)]];
+}
+
 @end
