@@ -9,9 +9,17 @@
 #import "LMLibraryBrowserViewController.h"
 #import "LMAssetsGroupBrowserViewController.h"
 
+
+
+static CGFloat kLibraryBrowserCellHeight = 56.;
+
+
+
 @interface LMLibraryBrowserViewController ()
 
 @end
+
+
 
 @implementation LMLibraryBrowserViewController
 
@@ -188,6 +196,11 @@
 {
     LMAssetsGroupBrowserViewController *albumBrowser = [LMAssetsGroupBrowserViewController browserWithAssetsGroup:self.assetsGroups[indexPath.row]];
     [self.navigationController pushViewController:albumBrowser animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kLibraryBrowserCellHeight;
 }
 
 @end
