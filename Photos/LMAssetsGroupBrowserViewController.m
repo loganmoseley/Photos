@@ -77,7 +77,8 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
     [self.collectionView setContentInset:inset];
     [self.collectionView setScrollIndicatorInsets:inset];
     
-        
+    
+    [self.collectionView setAlwaysBounceVertical:YES];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     [self.collectionView registerClass:[LMAssetThumbnailCell class] forCellWithReuseIdentifier:kAssetThumbnailCellIdentifier];
     
