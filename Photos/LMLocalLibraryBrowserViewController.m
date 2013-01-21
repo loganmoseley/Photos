@@ -63,9 +63,11 @@
     }
     else if (buttonIndex == 1) {
         UITextField *textField = [alertView textFieldAtIndex:0];
+        __weak LMLocalLibraryBrowserViewController *weakSelf = self;
         [self.assetsLibrary addAssetsGroupAlbumWithName:textField.text
                                             resultBlock:^(ALAssetsGroup *group) {
-                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                [weakSelf.assetsGroups addObject:group];
+                                                [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(weakSelf.assetsGroups.count-1) inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
                                             }
                                            failureBlock:^(NSError *error) {
                                                NSLog(@"could not create the group. error: %@", error);

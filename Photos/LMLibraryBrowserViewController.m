@@ -54,8 +54,12 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.assetsLibrary = [ALAssetsLibrary new];
+    [self reloadData];
+}
+
+- (void)reloadData
+{
     self.assetsGroups = [NSMutableArray new];
     
     ALAssetsLibraryGroupsEnumerationResultsBlock listGroupBlock = ^(ALAssetsGroup *group, BOOL *stop)
@@ -88,19 +92,9 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (NSOrderedSet *)assetsGroupTypes
 {
-    [super viewDidAppear:animated];
-    if (_assetsGroupsDirty) {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-        _assetsGroupsDirty = NO;
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return nil;
 }
 
 
