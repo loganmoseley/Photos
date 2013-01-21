@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PSTCollectionView.h"
 
-@interface LMAssetThumbnailCell : UICollectionViewCell
+@interface LMAssetThumbnailCell : PSUICollectionViewCell
 @property (nonatomic, strong) UIImageView *imageView;
 @end

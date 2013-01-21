@@ -28,6 +28,18 @@
 		70D02F4616ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */; };
 		70E05E6C16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */; };
 		70E05E6F16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */; };
+		70E05E9716AD2B4300F1EC4E /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E7F16AD2B4300F1EC4E /* PSTCollectionView.m */; };
+		70E05E9816AD2B4300F1EC4E /* PSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E8116AD2B4300F1EC4E /* PSTCollectionViewCell.m */; };
+		70E05E9916AD2B4300F1EC4E /* PSTCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E8416AD2B4300F1EC4E /* PSTCollectionViewController.m */; };
+		70E05E9A16AD2B4300F1EC4E /* PSTCollectionViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E8616AD2B4300F1EC4E /* PSTCollectionViewData.m */; };
+		70E05E9B16AD2B4300F1EC4E /* PSTCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E8816AD2B4300F1EC4E /* PSTCollectionViewFlowLayout.m */; };
+		70E05E9C16AD2B4300F1EC4E /* PSTCollectionViewItemKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E8A16AD2B4300F1EC4E /* PSTCollectionViewItemKey.m */; };
+		70E05E9D16AD2B4300F1EC4E /* PSTCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E8C16AD2B4300F1EC4E /* PSTCollectionViewLayout.m */; };
+		70E05E9E16AD2B4300F1EC4E /* PSTCollectionViewUpdateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E8E16AD2B4300F1EC4E /* PSTCollectionViewUpdateItem.m */; };
+		70E05E9F16AD2B4300F1EC4E /* PSTGridLayoutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9016AD2B4300F1EC4E /* PSTGridLayoutInfo.m */; };
+		70E05EA016AD2B4300F1EC4E /* PSTGridLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9216AD2B4300F1EC4E /* PSTGridLayoutItem.m */; };
+		70E05EA116AD2B4300F1EC4E /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9416AD2B4300F1EC4E /* PSTGridLayoutRow.m */; };
+		70E05EA216AD2B4300F1EC4E /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +74,31 @@
 		70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMLocalLibraryBrowserViewController.m; sourceTree = "<group>"; };
 		70E05E6D16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStreamLibraryBrowserViewController.h; sourceTree = "<group>"; };
 		70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStreamLibraryBrowserViewController.m; sourceTree = "<group>"; };
+		70E05E7E16AD2B4300F1EC4E /* PSTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionView.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionView.h; sourceTree = SOURCE_ROOT; };
+		70E05E7F16AD2B4300F1EC4E /* PSTCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionView.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionView.m; sourceTree = SOURCE_ROOT; };
+		70E05E8016AD2B4300F1EC4E /* PSTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewCell.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		70E05E8116AD2B4300F1EC4E /* PSTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionViewCell.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		70E05E8216AD2B4300F1EC4E /* PSTCollectionViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewCommon.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewCommon.h; sourceTree = SOURCE_ROOT; };
+		70E05E8316AD2B4300F1EC4E /* PSTCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewController.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewController.h; sourceTree = SOURCE_ROOT; };
+		70E05E8416AD2B4300F1EC4E /* PSTCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionViewController.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewController.m; sourceTree = SOURCE_ROOT; };
+		70E05E8516AD2B4300F1EC4E /* PSTCollectionViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewData.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewData.h; sourceTree = SOURCE_ROOT; };
+		70E05E8616AD2B4300F1EC4E /* PSTCollectionViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionViewData.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewData.m; sourceTree = SOURCE_ROOT; };
+		70E05E8716AD2B4300F1EC4E /* PSTCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewFlowLayout.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewFlowLayout.h; sourceTree = SOURCE_ROOT; };
+		70E05E8816AD2B4300F1EC4E /* PSTCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionViewFlowLayout.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewFlowLayout.m; sourceTree = SOURCE_ROOT; };
+		70E05E8916AD2B4300F1EC4E /* PSTCollectionViewItemKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewItemKey.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewItemKey.h; sourceTree = SOURCE_ROOT; };
+		70E05E8A16AD2B4300F1EC4E /* PSTCollectionViewItemKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionViewItemKey.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewItemKey.m; sourceTree = SOURCE_ROOT; };
+		70E05E8B16AD2B4300F1EC4E /* PSTCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewLayout.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
+		70E05E8C16AD2B4300F1EC4E /* PSTCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionViewLayout.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
+		70E05E8D16AD2B4300F1EC4E /* PSTCollectionViewUpdateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionViewUpdateItem.h; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewUpdateItem.h; sourceTree = SOURCE_ROOT; };
+		70E05E8E16AD2B4300F1EC4E /* PSTCollectionViewUpdateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTCollectionViewUpdateItem.m; path = PSTCollectionView/PSTCollectionView/PSTCollectionViewUpdateItem.m; sourceTree = SOURCE_ROOT; };
+		70E05E8F16AD2B4300F1EC4E /* PSTGridLayoutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTGridLayoutInfo.h; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutInfo.h; sourceTree = SOURCE_ROOT; };
+		70E05E9016AD2B4300F1EC4E /* PSTGridLayoutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutInfo.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutInfo.m; sourceTree = SOURCE_ROOT; };
+		70E05E9116AD2B4300F1EC4E /* PSTGridLayoutItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTGridLayoutItem.h; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutItem.h; sourceTree = SOURCE_ROOT; };
+		70E05E9216AD2B4300F1EC4E /* PSTGridLayoutItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutItem.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutItem.m; sourceTree = SOURCE_ROOT; };
+		70E05E9316AD2B4300F1EC4E /* PSTGridLayoutRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTGridLayoutRow.h; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutRow.h; sourceTree = SOURCE_ROOT; };
+		70E05E9416AD2B4300F1EC4E /* PSTGridLayoutRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutRow.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutRow.m; sourceTree = SOURCE_ROOT; };
+		70E05E9516AD2B4300F1EC4E /* PSTGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTGridLayoutSection.h; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutSection.h; sourceTree = SOURCE_ROOT; };
+		70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutSection.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutSection.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +172,7 @@
 				70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */,
 				7091597B16ACC0B2001B1BF8 /* LMAssetThumbnailCell.h */,
 				7091597C16ACC0B2001B1BF8 /* LMAssetThumbnailCell.m */,
+				70E05E7D16AD2B2A00F1EC4E /* PSTCollectionView */,
 				709159C516ACE2A9001B1BF8 /* Assets */,
 				70A549D316AC9299009DC711 /* Supporting Files */,
 			);
@@ -163,6 +201,38 @@
 				70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */,
 			);
 			name = "Library browser view controllers";
+			sourceTree = "<group>";
+		};
+		70E05E7D16AD2B2A00F1EC4E /* PSTCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				70E05E7E16AD2B4300F1EC4E /* PSTCollectionView.h */,
+				70E05E7F16AD2B4300F1EC4E /* PSTCollectionView.m */,
+				70E05E8016AD2B4300F1EC4E /* PSTCollectionViewCell.h */,
+				70E05E8116AD2B4300F1EC4E /* PSTCollectionViewCell.m */,
+				70E05E8216AD2B4300F1EC4E /* PSTCollectionViewCommon.h */,
+				70E05E8316AD2B4300F1EC4E /* PSTCollectionViewController.h */,
+				70E05E8416AD2B4300F1EC4E /* PSTCollectionViewController.m */,
+				70E05E8516AD2B4300F1EC4E /* PSTCollectionViewData.h */,
+				70E05E8616AD2B4300F1EC4E /* PSTCollectionViewData.m */,
+				70E05E8716AD2B4300F1EC4E /* PSTCollectionViewFlowLayout.h */,
+				70E05E8816AD2B4300F1EC4E /* PSTCollectionViewFlowLayout.m */,
+				70E05E8916AD2B4300F1EC4E /* PSTCollectionViewItemKey.h */,
+				70E05E8A16AD2B4300F1EC4E /* PSTCollectionViewItemKey.m */,
+				70E05E8B16AD2B4300F1EC4E /* PSTCollectionViewLayout.h */,
+				70E05E8C16AD2B4300F1EC4E /* PSTCollectionViewLayout.m */,
+				70E05E8D16AD2B4300F1EC4E /* PSTCollectionViewUpdateItem.h */,
+				70E05E8E16AD2B4300F1EC4E /* PSTCollectionViewUpdateItem.m */,
+				70E05E8F16AD2B4300F1EC4E /* PSTGridLayoutInfo.h */,
+				70E05E9016AD2B4300F1EC4E /* PSTGridLayoutInfo.m */,
+				70E05E9116AD2B4300F1EC4E /* PSTGridLayoutItem.h */,
+				70E05E9216AD2B4300F1EC4E /* PSTGridLayoutItem.m */,
+				70E05E9316AD2B4300F1EC4E /* PSTGridLayoutRow.h */,
+				70E05E9416AD2B4300F1EC4E /* PSTGridLayoutRow.m */,
+				70E05E9516AD2B4300F1EC4E /* PSTGridLayoutSection.h */,
+				70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */,
+			);
+			name = PSTCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +313,18 @@
 				7091597D16ACC0B2001B1BF8 /* LMAssetThumbnailCell.m in Sources */,
 				70E05E6C16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m in Sources */,
 				70E05E6F16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m in Sources */,
+				70E05E9716AD2B4300F1EC4E /* PSTCollectionView.m in Sources */,
+				70E05E9816AD2B4300F1EC4E /* PSTCollectionViewCell.m in Sources */,
+				70E05E9916AD2B4300F1EC4E /* PSTCollectionViewController.m in Sources */,
+				70E05E9A16AD2B4300F1EC4E /* PSTCollectionViewData.m in Sources */,
+				70E05E9B16AD2B4300F1EC4E /* PSTCollectionViewFlowLayout.m in Sources */,
+				70E05E9C16AD2B4300F1EC4E /* PSTCollectionViewItemKey.m in Sources */,
+				70E05E9D16AD2B4300F1EC4E /* PSTCollectionViewLayout.m in Sources */,
+				70E05E9E16AD2B4300F1EC4E /* PSTCollectionViewUpdateItem.m in Sources */,
+				70E05E9F16AD2B4300F1EC4E /* PSTGridLayoutInfo.m in Sources */,
+				70E05EA016AD2B4300F1EC4E /* PSTGridLayoutItem.m in Sources */,
+				70E05EA116AD2B4300F1EC4E /* PSTGridLayoutRow.m in Sources */,
+				70E05EA216AD2B4300F1EC4E /* PSTGridLayoutSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +400,7 @@
 				GCC_PREFIX_HEADER = "Photos/Photos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/PSTCollectionView/PSTCollectionView";
 				INFOPLIST_FILE = "Photos/Photos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -333,7 +415,7 @@
 				GCC_PREFIX_HEADER = "Photos/Photos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/PSTCollectionView/PSTCollectionView";
 				INFOPLIST_FILE = "Photos/Photos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

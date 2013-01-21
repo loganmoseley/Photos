@@ -11,7 +11,6 @@
 #import "LMAppDelegate.h"
 
 
-
 static CGFloat kItemSpacing = 5.;
 static CGFloat kItemsPerLine = 4.;
 
@@ -32,13 +31,13 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
 
 + (instancetype)browserWithAssetsGroup:(ALAssetsGroup *)group
 {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    PSUICollectionViewFlowLayout *layout = [[PSUICollectionViewFlowLayout alloc] init];
     LMAssetsGroupBrowserViewController *browser = [[LMAssetsGroupBrowserViewController alloc] initWithCollectionViewLayout:layout];
     browser.group = group;
     return browser;
 }
 
-- (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
+- (id)initWithCollectionViewLayout:(PSUICollectionViewLayout *)layout
 {
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
@@ -57,7 +56,7 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
     CGFloat itemsPerLine = kItemsPerLine;
     CGFloat itemWidth = (viewWidth - (itemsPerLine+1.)*spacing) / itemsPerLine;
     
-    UICollectionViewFlowLayout *gridLayout = [[UICollectionViewFlowLayout alloc] init];
+    PSUICollectionViewFlowLayout *gridLayout = [[PSUICollectionViewFlowLayout alloc] init];
     gridLayout.minimumLineSpacing = spacing;
     gridLayout.minimumInteritemSpacing = spacing;
     gridLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
@@ -110,17 +109,17 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
 
 #pragma mark - Collection view data source
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (NSInteger)numberOfSectionsInCollectionView:(PSUICollectionView *)collectionView
 {
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(PSUICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.assets.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (PSUICollectionViewCell *)collectionView:(PSUICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LMAssetThumbnailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kAssetThumbnailCellIdentifier forIndexPath:indexPath];
     ALAsset *asset = self.assets[indexPath.item];

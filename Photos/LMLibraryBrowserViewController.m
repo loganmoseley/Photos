@@ -121,11 +121,12 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
     
     NSString *name = [group valueForProperty:ALAssetsGroupPropertyName];
     NSString *nameAndCount = [name stringByAppendingFormat:@" (%i)", [group numberOfAssets]];
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:nameAndCount];
-    [attributedText setAttributes:@{ NSForegroundColorAttributeName: [UIColor lightGrayColor] }
-                            range:NSMakeRange(name.length, nameAndCount.length-name.length)];
-    
-    [cell.textLabel setAttributedText:attributedText];
+//    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:nameAndCount];
+//    [attributedText setAttributes:@{ NSForegroundColorAttributeName: [UIColor lightGrayColor] }
+//                            range:NSMakeRange(name.length, nameAndCount.length-name.length)];
+//    
+//    [cell.textLabel setAttributedText:attributedText];
+    [cell.textLabel setText:nameAndCount];
     [cell.textLabel setFont:nil];
     [cell.imageView setImage:[UIImage imageWithCGImage:[group posterImage]]];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "PSTCollectionView.h"
 
-@interface LMAssetsGroupBrowserViewController : UICollectionViewController
+@interface LMAssetsGroupBrowserViewController : PSUICollectionViewController
 + (instancetype)browserWithAssetsGroup:(ALAssetsGroup *)group;
 @end
