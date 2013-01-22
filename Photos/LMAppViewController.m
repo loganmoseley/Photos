@@ -15,8 +15,7 @@
 
 @implementation LMAppViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
@@ -24,8 +23,7 @@
     return self;
 }
 
-- (void)loadView
-{
+- (void)loadView {
     self.wantsFullScreenLayout = YES;
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *view = [[UIView alloc] initWithFrame:frame];
@@ -33,8 +31,7 @@
     self.view = view;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [self addChildViewController:self.viewController];
@@ -45,8 +42,7 @@
     [self.view addGestureRecognizer:pan];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -55,8 +51,7 @@
 
 #pragma mark - Pan gesture recognizer
 
-- (void)panned:(LMEdgePanGestureRecognizer *)recognizer
-{
+- (void)panned:(LMEdgePanGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [recognizer translationInView:recognizer.view];
         CGRect frame = self.viewController.view.frame;

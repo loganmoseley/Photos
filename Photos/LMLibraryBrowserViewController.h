@@ -14,8 +14,7 @@ typedef NS_ENUM(NSInteger, LMAssetLibraryScope) {
     LMStreamLibraryScope,
 };
 
-@interface LMLibraryBrowserViewController : UITableViewController <UIAlertViewDelegate>
-{
+@interface LMLibraryBrowserViewController : UITableViewController <UIAlertViewDelegate> {
 @protected
     BOOL _assetsGroupsDirty;
 }

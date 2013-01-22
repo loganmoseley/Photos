@@ -15,8 +15,7 @@
 
 @implementation LMLibraryBrowserNavigationController
 
-- (id)initWithRootViewController:(UIViewController *)rootViewController
-{
+- (id)initWithRootViewController:(UIViewController *)rootViewController {
     self = [super initWithRootViewController:rootViewController];
     if (self) {
         self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
@@ -29,14 +28,12 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
