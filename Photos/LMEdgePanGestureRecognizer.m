@@ -16,7 +16,8 @@ static LMEdgePanGestureRecognizerEdge const kRecognizedEdgesDefault = LMEdgePanG
 
 @implementation LMEdgePanGestureRecognizer
 
-- (id)initWithTarget:(id)target action:(SEL)action {
+- (id)initWithTarget:(id)target action:(SEL)action
+{
     self = [super initWithTarget:target action:action];
     if (self) {
         self.touchMargin = kReceivingTouchMarginDefault;
@@ -25,26 +26,31 @@ static LMEdgePanGestureRecognizerEdge const kRecognizedEdgesDefault = LMEdgePanG
     return self;
 }
 
-- (BOOL)cancelsTouchesInView {
+- (BOOL)cancelsTouchesInView
+{
     return YES;
 }
 
-- (BOOL)canPreventGestureRecognizer:(UIGestureRecognizer *)preventedGestureRecognizer {
+- (BOOL)canPreventGestureRecognizer:(UIGestureRecognizer *)preventedGestureRecognizer
+{
     return YES;
 }
 
-- (BOOL)canBePreventedByGestureRecognizer:(UIGestureRecognizer *)preventingGestureRecognizer {
+- (BOOL)canBePreventedByGestureRecognizer:(UIGestureRecognizer *)preventingGestureRecognizer
+{
     return NO;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [touches anyObject];
     if ([self shouldCaptureTouch:touch]) {
         [super touchesBegan:touches withEvent:event];
     }
 }
 
-- (UIEdgeInsets)insetsForTouchDetection {
+- (UIEdgeInsets)insetsForTouchDetection
+{
     UIEdgeInsets insets = UIEdgeInsetsZero;
     insets.top    = self.edge & LMEdgePanGestureRecognizerEdgeTop    ? self.touchMargin : 0.;
     insets.left   = self.edge & LMEdgePanGestureRecognizerEdgeLeft   ? self.touchMargin : 0.;
@@ -53,7 +59,8 @@ static LMEdgePanGestureRecognizerEdge const kRecognizedEdgesDefault = LMEdgePanG
     return insets;
 }
 
-- (BOOL)shouldCaptureTouch:(UITouch *)touch {
+- (BOOL)shouldCaptureTouch:(UITouch *)touch
+{
     CGPoint location = [touch locationInView:self.view];
     CGRect viewBounds = self.view.frame;
     viewBounds.origin = CGPointZero;

@@ -25,7 +25,8 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
 
 @implementation LMLibraryBrowserViewController
 
-+ (instancetype)browserWithLibraryScope:(LMAssetLibraryScope)scope {
++ (instancetype)browserWithLibraryScope:(LMAssetLibraryScope)scope
+{
     Class class;
     switch (scope) {
         case LMLocalLibraryScope:
@@ -41,7 +42,8 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
     return browser;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     self = [super initWithStyle:style];
     if (self) {
         self.wantsFullScreenLayout = YES;
@@ -49,13 +51,15 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.assetsLibrary = [ALAssetsLibrary new];
     [self reloadData];
 }
 
-- (void)reloadData {
+- (void)reloadData
+{
     self.assetsGroups = [NSMutableArray new];
     
     ALAssetsLibraryGroupsEnumerationResultsBlock listGroupBlock = ^(ALAssetsGroup *group, BOOL *stop)
@@ -68,7 +72,7 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
     };
     
     ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError *error)
-    {
+   {
         NSString *errorMessage = nil;
         switch ([error code]) {
             case ALAssetsLibraryAccessUserDeniedError:
@@ -88,7 +92,8 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
     }
 }
 
-- (NSOrderedSet *)assetsGroupTypes {
+- (NSOrderedSet *)assetsGroupTypes
+{
     return nil;
 }
 
@@ -96,15 +101,18 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.assetsGroups.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -130,12 +138,14 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     LMAssetsGroupBrowserViewController *albumBrowser = [LMAssetsGroupBrowserViewController browserWithAssetsGroup:self.assetsGroups[indexPath.row]];
     [self.navigationController pushViewController:albumBrowser animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return kLibraryBrowserCellHeight;
 }
 

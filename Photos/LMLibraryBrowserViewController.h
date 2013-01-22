@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-typedef NS_ENUM(NSInteger, LMAssetLibraryScope) {
+typedef NS_ENUM(NSInteger, LMAssetLibraryScope)
+{
     LMLocalLibraryScope,
     LMStreamLibraryScope,
 };
 
-@interface LMLibraryBrowserViewController : UITableViewController <UIAlertViewDelegate> {
+@interface LMLibraryBrowserViewController : UITableViewController <UIAlertViewDelegate>
+{
 @protected
     BOOL _assetsGroupsDirty;
 }

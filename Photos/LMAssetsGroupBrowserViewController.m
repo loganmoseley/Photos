@@ -29,14 +29,16 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
 
 @implementation LMAssetsGroupBrowserViewController
 
-+ (instancetype)browserWithAssetsGroup:(ALAssetsGroup *)group {
++ (instancetype)browserWithAssetsGroup:(ALAssetsGroup *)group
+{
     PSUICollectionViewFlowLayout *layout = [[PSUICollectionViewFlowLayout alloc] init];
     LMAssetsGroupBrowserViewController *browser = [[LMAssetsGroupBrowserViewController alloc] initWithCollectionViewLayout:layout];
     browser.group = group;
     return browser;
 }
 
-- (id)initWithCollectionViewLayout:(PSUICollectionViewLayout *)layout {
+- (id)initWithCollectionViewLayout:(PSUICollectionViewLayout *)layout
+{
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
         self.wantsFullScreenLayout = YES;
@@ -44,7 +46,8 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     
@@ -90,12 +93,14 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
     }];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setGroup:(ALAssetsGroup *)group {
+- (void)setGroup:(ALAssetsGroup *)group
+{
     _group = group;
     self.title = [self.group valueForProperty:ALAssetsGroupPropertyName];
 }
@@ -104,15 +109,18 @@ static NSString *const kAssetThumbnailCellIdentifier = @"kAssetThumbnailCellIden
 
 #pragma mark - Collection view data source
 
-- (NSInteger)numberOfSectionsInCollectionView:(PSUICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInCollectionView:(PSUICollectionView *)collectionView
+{
     return 1;
 }
 
-- (NSInteger)collectionView:(PSUICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(PSUICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return self.assets.count;
 }
 
-- (PSUICollectionViewCell *)collectionView:(PSUICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (PSUICollectionViewCell *)collectionView:(PSUICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     LMAssetThumbnailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kAssetThumbnailCellIdentifier forIndexPath:indexPath];
     ALAsset *asset = self.assets[indexPath.item];
     UIImage *image = [UIImage imageWithCGImage:asset.thumbnail];

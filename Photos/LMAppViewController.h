@@ -10,7 +10,7 @@
 
 @interface LMAppViewController : UIViewController <UIGestureRecognizerDelegate>
 @property (nonatomic, weak) UIWindow *window;
-@property (nonatomic, strong) UIViewController *viewController;
+@property (nonatomic, strong) UIViewController *selectedViewController;
 @end
 
 @interface LMAppViewControllerWindow : UIWindow

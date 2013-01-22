@@ -14,7 +14,8 @@
 
 @implementation LMLocalLibraryBrowserViewController
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     self = [super initWithStyle:style];
     if (self) {
         self.title = NSLocalizedString(@"Albums", @"Albums");
@@ -26,7 +27,8 @@
     return self;
 }
 
-- (NSOrderedSet *)assetsGroupTypes {
+- (NSOrderedSet *)assetsGroupTypes
+{
     return [NSOrderedSet orderedSetWithArray:@[@(ALAssetsGroupSavedPhotos), @(ALAssetsGroupAlbum)]];
 }
 
@@ -34,7 +36,8 @@
 
 #pragma Edit
 
-- (void)addTapped:(UIBarButtonItem *)sender {
+- (void)addTapped:(UIBarButtonItem *)sender
+{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New Album", @"New Album")
                                                         message:NSLocalizedString(@"Enter a name for this album.", @"Enter a name for this album.")
                                                        delegate:self
@@ -47,16 +50,17 @@
     [alertView show];
 }
 
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
     UITextField *textField = [alertView textFieldAtIndex:0];
     return textField.text.length > 0;
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     if (buttonIndex == 0) {
         // cancel. do nothing.
-    }
-    else if (buttonIndex == 1) {
+    } else if (buttonIndex == 1) {
         UITextField *textField = [alertView textFieldAtIndex:0];
         __weak LMLocalLibraryBrowserViewController *weakSelf = self;
         [self.assetsLibrary addAssetsGroupAlbumWithName:textField.text
@@ -70,7 +74,8 @@
     }
 }
 
-- (void)editTapped:(UIBarButtonItem *)sender {
+- (void)editTapped:(UIBarButtonItem *)sender
+{
     BOOL isNowEditing = !self.tableView.isEditing;
     [self.tableView setEditing:isNowEditing animated:YES];
     
@@ -87,13 +92,15 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     NSInteger rows = [super tableView:tableView numberOfRowsInSection:section];
     rows += tableView.isEditing ? 1 : 0;
     return rows;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (tableView.isEditing && indexPath.row == self.assetsGroups.count) {
         static NSString *const informationIdentifier = @"kTableViewInfomationCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:informationIdentifier];
@@ -111,15 +118,18 @@
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return YES;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return indexPath.row > 0 && indexPath.row < self.assetsGroups.count;
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
     NSInteger from = fromIndexPath.row;
     NSInteger to = toIndexPath.row;
     id a = [self.assetsGroups objectAtIndex:from];
@@ -131,11 +141,13 @@
 
 #pragma mark - Table view delegate
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return UITableViewCellEditingStyleNone;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
     if (proposedDestinationIndexPath.row == 0 ||
         proposedDestinationIndexPath.row == self.assetsGroups.count) {
         return sourceIndexPath;

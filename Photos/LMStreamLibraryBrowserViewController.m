@@ -14,7 +14,8 @@
 
 @implementation LMStreamLibraryBrowserViewController
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     self = [super initWithStyle:style];
     if (self) {
         self.title = NSLocalizedString(@"Photo Stream", @"Photo Stream");
@@ -24,7 +25,8 @@
     return self;
 }
 
-- (NSOrderedSet *)assetsGroupTypes {
+- (NSOrderedSet *)assetsGroupTypes
+{
     return [NSOrderedSet orderedSetWithArray:@[@(ALAssetsGroupPhotoStream)]];
 }
 

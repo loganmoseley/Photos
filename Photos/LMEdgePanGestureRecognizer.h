@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_OPTIONS(NSUInteger, LMEdgePanGestureRecognizerEdge) {
+typedef NS_OPTIONS(NSUInteger, LMEdgePanGestureRecognizerEdge)
+{
     LMEdgePanGestureRecognizerEdgeRight  = 1 << 0,
     LMEdgePanGestureRecognizerEdgeLeft   = 1 << 1,
     LMEdgePanGestureRecognizerEdgeTop    = 1 << 2,

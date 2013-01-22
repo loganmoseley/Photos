@@ -10,12 +10,13 @@
 #import "LMEdgePanGestureRecognizer.h"
 
 @interface LMAppViewController ()
-
+@property (nonatomic, strong) UIView *mainView;
 @end
 
 @implementation LMAppViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
@@ -23,26 +24,36 @@
     return self;
 }
 
-- (void)loadView {
+- (void)loadView
+{
     self.wantsFullScreenLayout = YES;
     CGRect frame = [[UIScreen mainScreen] bounds];
+    
     UIView *view = [[UIView alloc] initWithFrame:frame];
     view.backgroundColor = [UIColor blueColor];
+    
+    UIView *mainView = [[UIView alloc] initWithFrame:view.bounds];
+    mainView.backgroundColor = nil;
+    [view addSubview:mainView];
+    
     self.view = view;
+    self.mainView = mainView;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    [self addChildViewController:self.viewController];
-    [self.view addSubview:self.viewController.view];
+    [self addChildViewController:self.selectedViewController];
+    [self.view addSubview:self.selectedViewController.view];
     
     LMEdgePanGestureRecognizer *pan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleBottomEdgePan:)];
     [pan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
     [self.view addGestureRecognizer:pan];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -51,7 +62,8 @@
 
 #pragma mark - Pan gesture recognizer
 
-- (void)handleBottomEdgePan:(LMEdgePanGestureRecognizer *)recognizer {
+- (void)handleBottomEdgePan:(LMEdgePanGestureRecognizer *)recognizer
+{
     CGFloat kRevealHeight = 50.;
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [recognizer translationInView:recognizer.view];
@@ -59,7 +71,8 @@
         
         if (translation.y <= 0) {
             CGFloat d = MAX(translation.y, -kRevealHeight);
-            if (translation.y < -kRevealHeight) {
+            if (translation.y < -kRevealHeight)
+            {
                 CGFloat extra = -kRevealHeight - translation.y;
                 CGFloat extraMax = CGRectGetHeight(recognizer.view.bounds) - kRevealHeight;
                 CGFloat damped = extra/extraMax*kRevealHeight;
@@ -72,16 +85,17 @@
             transform = CGAffineTransformConcat(transform, CGAffineTransformMakeTranslation(0, translation.y/2.));
         }
         
-        self.viewController.view.transform = transform;
+        self.selectedViewController.view.transform = transform;
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:0.2
                               delay:0.
                             options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut
                          animations:^{
-                             self.viewController.view.transform = CGAffineTransformIdentity;
+                             self.selectedViewController.view.transform = CGAffineTransformIdentity;
                          }
-                         completion:^(BOOL finished) {
+                         completion:^(BOOL finished)
+        {
         }];
     }
 }
