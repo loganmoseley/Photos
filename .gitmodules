@@ -1,3 +1,3 @@
 [submodule "PSTCollectionView"]
 	path = PSTCollectionView
-	url = /Users/loganmoseley/Development/PSTCollectionView
+	url = git@github.com:loganmoseley/PSTCollectionView.git
