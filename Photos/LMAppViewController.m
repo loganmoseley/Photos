@@ -37,7 +37,7 @@
     [self addChildViewController:self.viewController];
     [self.view addSubview:self.viewController.view];
     
-    LMEdgePanGestureRecognizer *pan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
+    LMEdgePanGestureRecognizer *pan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleBottomEdgePan:)];
     [pan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
     [self.view addGestureRecognizer:pan];
 }
@@ -51,17 +51,37 @@
 
 #pragma mark - Pan gesture recognizer
 
-- (void)panned:(LMEdgePanGestureRecognizer *)recognizer {
+- (void)handleBottomEdgePan:(LMEdgePanGestureRecognizer *)recognizer {
+    CGFloat kRevealHeight = 50.;
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [recognizer translationInView:recognizer.view];
-        CGRect frame = self.viewController.view.frame;
-        frame.origin.y = translation.y;
-        self.viewController.view.frame = frame;
+        CGAffineTransform transform;
+        
+        if (translation.y <= 0) {
+            CGFloat d = MAX(translation.y, -kRevealHeight);
+            if (translation.y < -kRevealHeight) {
+                CGFloat extra = -kRevealHeight - translation.y;
+                CGFloat extraMax = CGRectGetHeight(recognizer.view.bounds) - kRevealHeight;
+                CGFloat damped = extra/extraMax*kRevealHeight;
+                d -= damped;
+            }
+            transform = CGAffineTransformMakeTranslation(0, d);
+        } else {
+            CGFloat scale = translation.y / CGRectGetHeight(recognizer.view.bounds);
+            transform = CGAffineTransformMakeScale(1., 1. + scale);
+            transform = CGAffineTransformConcat(transform, CGAffineTransformMakeTranslation(0, translation.y/2.));
+        }
+        
+        self.viewController.view.transform = transform;
+        
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:0.2 animations:^{
-            CGRect frame = self.viewController.view.frame;
-            frame.origin = CGPointZero;
-            self.viewController.view.frame = frame;
+        [UIView animateWithDuration:0.2
+                              delay:0.
+                            options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.viewController.view.transform = CGAffineTransformIdentity;
+                         }
+                         completion:^(BOOL finished) {
         }];
     }
 }
