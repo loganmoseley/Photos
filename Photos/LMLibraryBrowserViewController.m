@@ -10,8 +10,6 @@
 #import "LMAssetsGroupBrowserViewController.h"
 #import "LMLocalLibraryBrowserViewController.h"
 #import "LMStreamLibraryBrowserViewController.h"
-#import "LMAppDelegate.h"
-#import "LMAppViewController.h"
 
 
 
@@ -57,12 +55,6 @@ static CGFloat kLibraryBrowserCellHeight = 56.;
 {
     [super viewDidLoad];
     self.assetsLibrary = [ALAssetsLibrary new];
-    NSArray *appGestureRecognizers = [[(LMAppDelegate *)[[UIApplication sharedApplication] delegate] appController] gestureRecognizers];
-    for (UIGestureRecognizer *appGR in appGestureRecognizers) {
-        for (UIGestureRecognizer *myGR in self.view.gestureRecognizers) {
-            [myGR requireGestureRecognizerToFail:appGR];
-        }
-    }
     [self reloadData];
 }
 

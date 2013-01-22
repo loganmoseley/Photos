@@ -41,6 +41,7 @@
 		70E05EA116AD2B4300F1EC4E /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9416AD2B4300F1EC4E /* PSTGridLayoutRow.m */; };
 		70E05EA216AD2B4300F1EC4E /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */; };
 		70E05EC416ADE76600F1EC4E /* LMAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05EC316ADE76500F1EC4E /* LMAppViewController.m */; };
+		70E05EC716AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,8 @@
 		70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutSection.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutSection.m; sourceTree = SOURCE_ROOT; };
 		70E05EC216ADE76500F1EC4E /* LMAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppViewController.h; sourceTree = "<group>"; };
 		70E05EC316ADE76500F1EC4E /* LMAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAppViewController.m; sourceTree = "<group>"; };
+		70E05EC516AE029C00F1EC4E /* LMEdgePanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEdgePanGestureRecognizer.h; sourceTree = "<group>"; };
+		70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEdgePanGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +173,8 @@
 				70A549DC16AC9299009DC711 /* LMAppDelegate.m */,
 				70E05EC216ADE76500F1EC4E /* LMAppViewController.h */,
 				70E05EC316ADE76500F1EC4E /* LMAppViewController.m */,
+				70E05EC516AE029C00F1EC4E /* LMEdgePanGestureRecognizer.h */,
+				70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */,
 				70E05E7016AD027500F1EC4E /* Library browser */,
 				70E05EC116ADE72400F1EC4E /* Asset browser */,
 				70E05E7D16AD2B2A00F1EC4E /* PSTCollectionView */,
@@ -339,6 +344,7 @@
 				70E05EA116AD2B4300F1EC4E /* PSTGridLayoutRow.m in Sources */,
 				70E05EA216AD2B4300F1EC4E /* PSTGridLayoutSection.m in Sources */,
 				70E05EC416ADE76600F1EC4E /* LMAppViewController.m in Sources */,
+				70E05EC716AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

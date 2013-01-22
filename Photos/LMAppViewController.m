@@ -7,6 +7,7 @@
 //
 
 #import "LMAppViewController.h"
+#import "LMEdgePanGestureRecognizer.h"
 
 @interface LMAppViewController ()
 
@@ -28,6 +29,7 @@
     self.wantsFullScreenLayout = YES;
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *view = [[UIView alloc] initWithFrame:frame];
+    view.backgroundColor = [UIColor blueColor];
     self.view = view;
 }
 
@@ -38,9 +40,8 @@
     [self addChildViewController:self.viewController];
     [self.view addSubview:self.viewController.view];
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
-    [pan setCancelsTouchesInView:YES];
-    [pan setDelegate:self];
+    LMEdgePanGestureRecognizer *pan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
+    [pan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
     [self.view addGestureRecognizer:pan];
 }
 
@@ -54,42 +55,20 @@
 
 #pragma mark - Pan gesture recognizer
 
-- (void)panned:(UIPanGestureRecognizer *)recognizer
+- (void)panned:(LMEdgePanGestureRecognizer *)recognizer
 {
-    CGPoint translation = [recognizer translationInView:recognizer.view];
-    NSLog(@"translation: %@", NSStringFromCGPoint(translation));
-}
-
-- (NSArray *)gestureRecognizers
-{
-    return self.view.gestureRecognizers;
-}
-
-#pragma mark Delegate
-
-// called when a gesture recognizer attempts to transition out of UIGestureRecognizerStatePossible. returning NO causes it to transition to UIGestureRecognizerStateFailed
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    return YES;
-}
-
-// called before touchesBegan:withEvent: is called on the gesture recognizer for a new touch. return NO to prevent the gesture recognizer from seeing this touch
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    static CGFloat const kReceivingTouchMargin = 20.;
-    
-    CGPoint location = [touch locationInView:gestureRecognizer.view];
-    CGRect viewBounds = gestureRecognizer.view.frame;
-    viewBounds.origin = CGPointZero;
-    
-    bool viewContainsPoint = CGRectContainsPoint(viewBounds, location);
-    if (!viewContainsPoint) return NO;
-    
-    CGRect insetBounds = CGRectInset(viewBounds, kReceivingTouchMargin, kReceivingTouchMargin);
-    bool insetContainsPoint = CGRectContainsPoint(insetBounds, location);
-    if (insetContainsPoint) return NO;
-    
-    return YES;
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [recognizer translationInView:recognizer.view];
+        CGRect frame = self.viewController.view.frame;
+        frame.origin.y = translation.y;
+        self.viewController.view.frame = frame;
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        [UIView animateWithDuration:0.2 animations:^{
+            CGRect frame = self.viewController.view.frame;
+            frame.origin = CGPointZero;
+            self.viewController.view.frame = frame;
+        }];
+    }
 }
 
 @end

@@ -11,7 +11,6 @@
 @interface LMAppViewController : UIViewController <UIGestureRecognizerDelegate>
 @property (nonatomic, weak) UIWindow *window;
 @property (nonatomic, strong) UIViewController *viewController;
-- (NSArray *)gestureRecognizers;
 @end
 
 @interface LMAppViewControllerWindow : UIWindow
