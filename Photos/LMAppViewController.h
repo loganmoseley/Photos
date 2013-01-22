@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LMAppViewController : UIViewController <UIGestureRecognizerDelegate>
-@property (nonatomic, weak) UIWindow *window;
-@property (nonatomic, strong) UIViewController *selectedViewController;
-@end
 
-@interface LMAppViewControllerWindow : UIWindow
+@property (nonatomic, strong) NSArray *viewControllers;
+@property (nonatomic, weak) UIViewController *selectedViewController;
+@property (nonatomic) NSUInteger selectedIndex; // default 0
+
 @end
