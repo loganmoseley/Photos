@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LMScrollingTabBar.h"
 
-@interface LMAppViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface LMAppViewController : UIViewController <UIGestureRecognizerDelegate, LMScrollingTabBarDelegate>
 
 @property (nonatomic, strong) NSArray *viewControllers;
 @property (nonatomic, weak) UIViewController *selectedViewController;

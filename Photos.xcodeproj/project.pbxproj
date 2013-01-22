@@ -27,6 +27,7 @@
 		70D02F3F16ACAEBE00D0E35F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */; };
 		70D02F4616ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */; };
 		70D9DE7E16AE69EC00F8DD69 /* LMScrollingTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D9DE7D16AE69EC00F8DD69 /* LMScrollingTabBar.m */; };
+		70D9DE8516AE8D4100F8DD69 /* UIColor+LMStyling.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D9DE8416AE8D4100F8DD69 /* UIColor+LMStyling.m */; };
 		70E05E6C16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */; };
 		70E05E6F16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E6E16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.m */; };
 		70E05E9716AD2B4300F1EC4E /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E7F16AD2B4300F1EC4E /* PSTCollectionView.m */; };
@@ -75,6 +76,8 @@
 		70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAssetsGroupBrowserViewController.m; sourceTree = "<group>"; };
 		70D9DE7C16AE69EC00F8DD69 /* LMScrollingTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMScrollingTabBar.h; sourceTree = "<group>"; };
 		70D9DE7D16AE69EC00F8DD69 /* LMScrollingTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMScrollingTabBar.m; sourceTree = "<group>"; };
+		70D9DE8316AE8D4100F8DD69 /* UIColor+LMStyling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LMStyling.h"; sourceTree = "<group>"; };
+		70D9DE8416AE8D4100F8DD69 /* UIColor+LMStyling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LMStyling.m"; sourceTree = "<group>"; };
 		70E05E6A16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMLocalLibraryBrowserViewController.h; sourceTree = "<group>"; };
 		70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMLocalLibraryBrowserViewController.m; sourceTree = "<group>"; };
 		70E05E6D16AD027000F1EC4E /* LMStreamLibraryBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStreamLibraryBrowserViewController.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */,
 				70D9DE7C16AE69EC00F8DD69 /* LMScrollingTabBar.h */,
 				70D9DE7D16AE69EC00F8DD69 /* LMScrollingTabBar.m */,
+				70D9DE8316AE8D4100F8DD69 /* UIColor+LMStyling.h */,
+				70D9DE8416AE8D4100F8DD69 /* UIColor+LMStyling.m */,
 				70E05E7016AD027500F1EC4E /* Library browser */,
 				70E05EC116ADE72400F1EC4E /* Asset browser */,
 				70E05E7D16AD2B2A00F1EC4E /* PSTCollectionView */,
@@ -351,6 +356,7 @@
 				70E05EC416ADE76600F1EC4E /* LMAppViewController.m in Sources */,
 				70E05EC716AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m in Sources */,
 				70D9DE7E16AE69EC00F8DD69 /* LMScrollingTabBar.m in Sources */,
+				70D9DE8516AE8D4100F8DD69 /* UIColor+LMStyling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,4 +25,5 @@
 @property (nonatomic, strong)   NSArray                  *items;        // get/set visible UIButtons. default is nil. changes not animated. shown in order
 @property (nonatomic, weak)     UIButton                 *selectedItem; // will show feedback based on mode. default is nil
 @property (nonatomic)           NSUInteger                selectedIndex;
+@property (nonatomic)           CGFloat                   minimumButtonWidth;
 @end

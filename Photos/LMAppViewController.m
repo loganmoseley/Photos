@@ -8,13 +8,14 @@
 
 #import "LMAppViewController.h"
 #import "LMEdgePanGestureRecognizer.h"
-#import "LMScrollingTabBar.h"
+#import "UIColor+LMStyling.h"
 
 @interface LMAppViewController ()
 @property (nonatomic, strong) UIView *mainView;
 @property (nonatomic, strong) LMScrollingTabBar *tabBar;
 @property (nonatomic, getter = isTabBarOpen) BOOL tabBarOpen;
-@property (nonatomic, weak) LMEdgePanGestureRecognizer *edgePanRecognizer;
+@property (nonatomic, weak) LMEdgePanGestureRecognizer *mainViewEdgePanRecognizer;
+@property (nonatomic, weak) UITapGestureRecognizer *mainViewTapRecognizer;
 @end
 
 @implementation LMAppViewController
@@ -35,7 +36,7 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     
     UIView *view = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = [UIColor blueColor];
+    view.backgroundColor = [UIColor offWhiteColor];
     
     UIView *mainView = [[UIView alloc] initWithFrame:view.bounds];
     mainView.backgroundColor = nil;
@@ -45,6 +46,7 @@
     tabFrame.size.height = 50.;
     tabFrame.origin.y = CGRectGetMaxY(frame) - CGRectGetHeight(tabFrame);
     LMScrollingTabBar *tabBar = [[LMScrollingTabBar alloc] initWithFrame:tabFrame];
+    [tabBar setDelegate:self];
     [view addSubview:tabBar];
     [view sendSubviewToBack:tabBar];
     
@@ -57,19 +59,42 @@
 {
     [super viewDidLoad];
     
-    UIButton *one = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    UIButton *two = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    [self.tabBar setItems:@[one, two]];
+    NSMutableArray *buttons = [NSMutableArray array];
+    
+    for (UIViewController *viewController in self.viewControllers) {
+        NSString *title;
+        if ([viewController respondsToSelector:@selector(viewControllers)]) {
+            UINavigationController *navController = (UINavigationController *)viewController;
+            UIViewController *rootViewController = navController.viewControllers.count > 0 ? navController.viewControllers[0] : nil;
+            if (rootViewController) {
+                title = rootViewController.title;
+            }
+        }
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:title forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
+        [[button titleLabel] setFont:[UIFont systemFontOfSize:17]];
+        [buttons addObject:button];
+    }
+    
+    [self.tabBar setItems:buttons];
+    [self.tabBar setMinimumButtonWidth:100.];
     
     if (self.selectedViewController) {
         [self addChildViewController:self.selectedViewController];
         [self.mainView addSubview:self.selectedViewController.view];
     }
     
-    LMEdgePanGestureRecognizer *edgePan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleBottomEdgePan:)];
+    LMEdgePanGestureRecognizer *edgePan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewBottomEdgePan:)];
     [edgePan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
     [self.mainView addGestureRecognizer:edgePan];
-    self.edgePanRecognizer = edgePan;
+    self.mainViewEdgePanRecognizer = edgePan;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewTapped:)];
+    [tap setEnabled:NO];
+    [self.mainView addGestureRecognizer:tap];
+    self.mainViewTapRecognizer = tap;
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,6 +142,8 @@
     [self.mainView addSubview:newViewController.view];
     
     [self didChangeValueForKey:@"selectedIndex"];
+    
+    [self setTabBarOpen:NO];
 }
 
 
@@ -144,7 +171,8 @@
                          self.mainView.transform = CGAffineTransformMakeTranslation(0, -CGRectGetHeight(self.tabBar.frame));
                      }
                      completion:^(BOOL finished) {
-                         self.edgePanRecognizer.touchMargin = CGRectGetHeight(self.edgePanRecognizer.view.frame);
+                         self.mainViewEdgePanRecognizer.touchMargin = CGRectGetHeight(self.mainViewEdgePanRecognizer.view.frame);
+                         self.mainViewTapRecognizer.enabled = YES;
                      }];
 }
 
@@ -157,11 +185,12 @@
                          self.mainView.transform = CGAffineTransformIdentity;
                      }
                      completion:^(BOOL finished) {
-                         self.edgePanRecognizer.touchMargin = 20.;
+                         self.mainViewEdgePanRecognizer.touchMargin = 20.;
+                         self.mainViewTapRecognizer.enabled = NO;
                      }];
 }
 
-- (void)handleBottomEdgePan:(LMEdgePanGestureRecognizer *)recognizer
+- (void)handleMainViewBottomEdgePan:(LMEdgePanGestureRecognizer *)recognizer
 {
     CGFloat kRevealHeight = CGRectGetHeight(self.tabBar.frame);
     if (recognizer.state == UIGestureRecognizerStateChanged) {
@@ -212,6 +241,11 @@
         
         [self setTabBarOpen:shouldOpen];
     }
+}
+
+- (void)handleMainViewTapped:(UITapGestureRecognizer *)recognizer
+{
+    [self setTabBarOpen:NO];
 }
 
 
