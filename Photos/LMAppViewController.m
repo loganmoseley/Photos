@@ -170,7 +170,12 @@
 
 - (void)openTabBar
 {
-    [UIView animateWithDuration:0.2
+    CGFloat currentTranslation = self.mainView.transform.ty;
+    CGFloat maxTranslation = CGRectGetHeight(self.tabBar.frame);
+    CGFloat distanceToTarget = fabsf(currentTranslation + maxTranslation);
+    CGFloat maxDuration = 0.2;
+    CGFloat duration = MIN(fabsf(distanceToTarget/maxTranslation), 1.0) * maxDuration;
+    [UIView animateWithDuration:duration
                           delay:0.
                         options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut
                      animations:^{
@@ -199,36 +204,38 @@
 - (void)handleMainViewBottomEdgePan:(LMEdgePanGestureRecognizer *)recognizer
 {
     CGFloat kRevealHeight = CGRectGetHeight(self.tabBar.frame);
-    if (recognizer.state == UIGestureRecognizerStateChanged) {
+    static CGPoint initialTranslation = {0,0};
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        initialTranslation = CGPointMake(self.mainView.transform.tx, self.mainView.transform.ty);
+        
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
         CGPoint translation = [recognizer translationInView:recognizer.view];
+        CGPoint targetTranslation = CGPointMake(translation.x+initialTranslation.x, translation.y+initialTranslation.y);
+        
         CGAffineTransform transform;
         
-        if (translation.y <= 0) {
+        if (targetTranslation.y <= 0) {
             CGFloat d;
-            BOOL isDamping;
             CGFloat extra;
             
-            if (self.isTabBarOpen) {
-                d = -kRevealHeight;
-                isDamping = YES;
-                extra = -translation.y;
-            } else {
-                d = MAX(translation.y, -kRevealHeight);
-                isDamping = translation.y < -kRevealHeight;
-                extra = -kRevealHeight - translation.y;
-            }
+            d = MAX(targetTranslation.y, -kRevealHeight);
+            extra = -kRevealHeight - targetTranslation.y;
             
-            if (isDamping)
+            if (extra > 0)
             {
                 CGFloat extraMax = CGRectGetHeight(recognizer.view.bounds) - kRevealHeight;
                 CGFloat damped = extra/extraMax*kRevealHeight;
                 d -= damped;
             }
+            
             transform = CGAffineTransformMakeTranslation(0, d);
         } else {
-            CGFloat scale = translation.y / CGRectGetHeight(recognizer.view.bounds);
+            CGFloat scale = translation.y / CGRectGetHeight(recognizer.view.bounds) * 0.1;
             transform = CGAffineTransformMakeScale(1., 1. + scale);
-            transform = CGAffineTransformConcat(transform, CGAffineTransformMakeTranslation(0, translation.y/2.));
+            transform = CGAffineTransformConcat(transform, CGAffineTransformMakeTranslation(0, translation.y/20.));
         }
         
         self.mainView.transform = transform;
@@ -241,8 +248,8 @@
         if (self.isTabBarOpen) {
             shouldOpen = -translation.y > CGRectGetHeight(self.tabBar.frame)*2./3.;
         } else {
-            shouldOpen |= velocity.y < -100.;
-            shouldOpen |= -translation.y > CGRectGetHeight(self.tabBar.frame)*2./3.;
+            shouldOpen |= -velocity.y    > recognizer.touchMargin * 5.0;
+            shouldOpen |= -translation.y > recognizer.touchMargin;
         }
         
         [self setTabBarOpen:shouldOpen];
