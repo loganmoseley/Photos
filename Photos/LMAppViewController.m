@@ -9,6 +9,7 @@
 #import "LMAppViewController.h"
 #import "LMEdgePanGestureRecognizer.h"
 #import "UIColor+LMStyling.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface LMAppViewController ()
 @property (nonatomic, strong) UIView *mainView;
@@ -40,6 +41,11 @@
     
     UIView *mainView = [[UIView alloc] initWithFrame:view.bounds];
     mainView.backgroundColor = nil;
+    mainView.opaque = YES;
+    mainView.layer.borderColor = [UIColor greenColor].CGColor;
+#if DEBUG
+    mainView.layer.borderWidth = 1.;
+#endif
     [view addSubview:mainView];
     
     CGRect tabFrame = frame;
