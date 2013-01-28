@@ -9,17 +9,24 @@
 #import "LMAppViewController.h"
 #import "LMEdgePanGestureRecognizer.h"
 #import "UIColor+LMStyling.h"
+#import "LMLibraryBrowserNavigationController.h"
 #import <QuartzCore/QuartzCore.h>
 
 static CGFloat kLeftPanTouchMargin = 20.f;
 
 @interface LMAppViewController ()
+
 @property (nonatomic, strong) UIView *mainView;
 @property (nonatomic, strong) LMScrollingTabBar *tabBar;
 @property (nonatomic, getter = isTabBarOpen) BOOL tabBarOpen;
+
 @property (nonatomic, weak) LMEdgePanGestureRecognizer *bottomEdgePanRecognizer;
 @property (nonatomic, weak) LMEdgePanGestureRecognizer *leftEdgePanRecognizer;
 @property (nonatomic, weak) UITapGestureRecognizer *mainViewTapRecognizer;
+
+@property (nonatomic, weak) LMLibraryBrowserNavigationController *navController;
+@property (nonatomic, strong) UIImageView *backView;
+
 @end
 
 @implementation LMAppViewController
@@ -51,6 +58,11 @@ static CGFloat kLeftPanTouchMargin = 20.f;
 #endif
     [view addSubview:mainView];
     
+    CGRect backFrame = mainView.frame;
+    backFrame.origin.x -= CGRectGetWidth(backFrame);
+    UIImageView *backView = [[UIImageView alloc] initWithFrame:backFrame];
+    [view addSubview:backView];
+    
     CGRect tabFrame = frame;
     tabFrame.size.height = 50.;
     tabFrame.origin.y = CGRectGetMaxY(frame) - CGRectGetHeight(tabFrame);
@@ -61,6 +73,7 @@ static CGFloat kLeftPanTouchMargin = 20.f;
     
     self.view = view;
     self.mainView = mainView;
+    self.backView = backView;
     self.tabBar = tabBar;
 }
 
@@ -94,6 +107,13 @@ static CGFloat kLeftPanTouchMargin = 20.f;
         [self addChildViewController:self.selectedViewController];
         [self.mainView addSubview:self.selectedViewController.view];
     }
+    
+    
+    UIImage *image = [UIImage imageNamed:@"DordogneRiver.jpg"];
+    [self.backView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.backView setClipsToBounds:YES];
+    [self.backView setImage:image];
+    
     
     LMEdgePanGestureRecognizer *bottomEdgePan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewBottomEdgePan:)];
     [bottomEdgePan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
@@ -157,6 +177,8 @@ static CGFloat kLeftPanTouchMargin = 20.f;
     UIViewController *newViewController = self.viewControllers[_selectedIndex];
     [self addChildViewController:newViewController];
     [self.mainView addSubview:newViewController.view];
+    
+    self.navController = [newViewController isKindOfClass:[LMLibraryBrowserNavigationController class]] ? (LMLibraryBrowserNavigationController *)newViewController : nil;
     
     [self didChangeValueForKey:@"selectedIndex"];
     
@@ -288,7 +310,7 @@ static CGFloat kLeftPanTouchMargin = 20.f;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         
-        initialTransform = self.mainView.transform;        
+        initialTransform = self.view.transform;
         self.bottomEdgePanRecognizer.enabled = NO;
         
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
@@ -298,21 +320,20 @@ static CGFloat kLeftPanTouchMargin = 20.f;
         CGPoint targetTranslation = CGPointMake(translation.x+initialTranslation.x, translation.y+initialTranslation.y);
         CGFloat x = MIN(MAX(0, targetTranslation.x), CGRectGetWidth(recognizer.view.frame)-5);
         CGAffineTransform transform = CGAffineTransformMakeTranslation(x, 0);
-        self.mainView.transform = transform;
+        self.view.transform = transform;
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
-//       [UIView animateWithDuration:0.2
-//                             delay:0.0
-//                           options:UIViewAnimationOptionBeginFromCurrentState
-//                        animations:^{
-//                            self.mainView.transform = CGAffineTransformIdentity;
-//                        }
-//                        completion:^(BOOL finished) {
-//                            self.mainViewBottomEdgePanRecognizer.enabled = YES;
-//                        }];
-        self.leftEdgePanRecognizer.touchMargin = self.mainView.transform.tx + kLeftPanTouchMargin;
-        self.bottomEdgePanRecognizer.enabled = YES;
+       [UIView animateWithDuration:0.2
+                             delay:0.0
+                           options:UIViewAnimationOptionBeginFromCurrentState
+                        animations:^{
+                            self.view.transform = CGAffineTransformIdentity;
+                        }
+                        completion:^(BOOL finished) {
+                            self.leftEdgePanRecognizer.touchMargin = self.view.transform.tx + kLeftPanTouchMargin;
+                            self.bottomEdgePanRecognizer.enabled = YES;
+                        }];
         
     }
 }

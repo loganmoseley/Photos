@@ -26,6 +26,9 @@
 		70A54A0716AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A54A0616AC9FD4009DC711 /* LMLibraryBrowserNavigationController.m */; };
 		70D02F3F16ACAEBE00D0E35F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */; };
 		70D02F4616ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */; };
+		70D10D3A16B69A370062617E /* DordogneRiver.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70D10D3916B69A370062617E /* DordogneRiver.jpg */; };
+		70D10D4016B69CB40062617E /* DordogneRiver.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D10D3F16B69CB40062617E /* DordogneRiver.png */; };
+		70D10D4216B69CB80062617E /* DordogneRiver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D10D4116B69CB80062617E /* DordogneRiver@2x.png */; };
 		70D9DE7E16AE69EC00F8DD69 /* LMScrollingTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D9DE7D16AE69EC00F8DD69 /* LMScrollingTabBar.m */; };
 		70D9DE8516AE8D4100F8DD69 /* UIColor+LMStyling.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D9DE8416AE8D4100F8DD69 /* UIColor+LMStyling.m */; };
 		70E05E6C16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E05E6B16AD025A00F1EC4E /* LMLocalLibraryBrowserViewController.m */; };
@@ -74,6 +77,9 @@
 		70D02F3C16ACAEB600D0E35F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		70D02F4416ACB89500D0E35F /* LMAssetsGroupBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAssetsGroupBrowserViewController.h; sourceTree = "<group>"; };
 		70D02F4516ACB89500D0E35F /* LMAssetsGroupBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAssetsGroupBrowserViewController.m; sourceTree = "<group>"; };
+		70D10D3916B69A370062617E /* DordogneRiver.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DordogneRiver.jpg; sourceTree = "<group>"; };
+		70D10D3F16B69CB40062617E /* DordogneRiver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DordogneRiver.png; path = ../DordogneRiver.png; sourceTree = "<group>"; };
+		70D10D4116B69CB80062617E /* DordogneRiver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DordogneRiver@2x.png"; path = "../DordogneRiver@2x.png"; sourceTree = "<group>"; };
 		70D9DE7C16AE69EC00F8DD69 /* LMScrollingTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMScrollingTabBar.h; sourceTree = "<group>"; };
 		70D9DE7D16AE69EC00F8DD69 /* LMScrollingTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMScrollingTabBar.m; sourceTree = "<group>"; };
 		70D9DE8316AE8D4100F8DD69 /* UIColor+LMStyling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LMStyling.h"; sourceTree = "<group>"; };
@@ -139,6 +145,9 @@
 				70A549DE16AC9299009DC711 /* Default.png */,
 				70A549E016AC9299009DC711 /* Default@2x.png */,
 				70A549E216AC9299009DC711 /* Default-568h@2x.png */,
+				70D10D3F16B69CB40062617E /* DordogneRiver.png */,
+				70D10D4116B69CB80062617E /* DordogneRiver@2x.png */,
+				70D10D3916B69A370062617E /* DordogneRiver.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -331,6 +340,9 @@
 				70A549EA16AC929A009DC711 /* first@2x.png in Resources */,
 				70A549EF16AC929A009DC711 /* second.png in Resources */,
 				70A549F116AC929A009DC711 /* second@2x.png in Resources */,
+				70D10D3A16B69A370062617E /* DordogneRiver.jpg in Resources */,
+				70D10D4016B69CB40062617E /* DordogneRiver.png in Resources */,
+				70D10D4216B69CB80062617E /* DordogneRiver@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
