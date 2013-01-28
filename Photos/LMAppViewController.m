@@ -47,13 +47,13 @@ static CGFloat kLeftPanTouchMargin = 20.f;
     CGRect frame = [[UIScreen mainScreen] bounds];
     
     UIView *view = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = [UIColor redColor];
+    view.backgroundColor = [UIColor offWhiteColor];
     
     UIView *mainView = [[UIView alloc] initWithFrame:view.bounds];
     mainView.backgroundColor = nil;
     mainView.opaque = YES;
-    mainView.layer.borderColor = [UIColor greenColor].CGColor;
 #if DEBUG
+    mainView.layer.borderColor = [UIColor greenColor].CGColor;
     mainView.layer.borderWidth = 1.;
 #endif
     [view addSubview:mainView];
@@ -61,7 +61,6 @@ static CGFloat kLeftPanTouchMargin = 20.f;
     CGRect backFrame = mainView.frame;
     backFrame.origin.x -= CGRectGetWidth(backFrame);
     UIImageView *backView = [[UIImageView alloc] initWithFrame:backFrame];
-    [view addSubview:backView];
     
     CGRect tabFrame = frame;
     tabFrame.size.height = 50.;
@@ -87,6 +86,7 @@ static CGFloat kLeftPanTouchMargin = 20.f;
         NSString *title;
         if ([viewController respondsToSelector:@selector(viewControllers)]) {
             UINavigationController *navController = (UINavigationController *)viewController;
+            [navController setDelegate:self];
             UIViewController *rootViewController = navController.viewControllers.count > 0 ? navController.viewControllers[0] : nil;
             if (rootViewController) {
                 title = rootViewController.title;
@@ -106,6 +106,7 @@ static CGFloat kLeftPanTouchMargin = 20.f;
     if (self.selectedViewController) {
         [self addChildViewController:self.selectedViewController];
         [self.mainView addSubview:self.selectedViewController.view];
+        self.navController = [self.selectedViewController isKindOfClass:[LMLibraryBrowserNavigationController class]] ? (LMLibraryBrowserNavigationController *)self.selectedViewController : nil;
     }
     
     
@@ -113,7 +114,7 @@ static CGFloat kLeftPanTouchMargin = 20.f;
     [self.backView setContentMode:UIViewContentModeScaleAspectFill];
     [self.backView setClipsToBounds:YES];
     [self.backView setImage:image];
-    
+    [self.backView setBackgroundColor:[UIColor offWhiteColor]];
     
     LMEdgePanGestureRecognizer *bottomEdgePan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewBottomEdgePan:)];
     [bottomEdgePan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
@@ -305,36 +306,95 @@ static CGFloat kLeftPanTouchMargin = 20.f;
 #pragma mark -Left
 
 - (void)handleMainViewLeftEdgePan:(LMEdgePanGestureRecognizer *)recognizer
-{    
+{
+    UIView *panningView = self.navController.view;
     static CGAffineTransform initialTransform;
+    static BOOL canGoBack = NO;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         
-        initialTransform = self.view.transform;
+        initialTransform = panningView.transform;
         self.bottomEdgePanRecognizer.enabled = NO;
+        canGoBack = self.navController.viewControllers.count > 1;
+        [self renderBackView];
         
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
+        CGFloat damper = canGoBack ? 1. : 0.1;
         
         CGPoint initialTranslation = CGPointMake(initialTransform.tx, initialTransform.ty);
         CGPoint translation = [recognizer translationInView:recognizer.view];
         CGPoint targetTranslation = CGPointMake(translation.x+initialTranslation.x, translation.y+initialTranslation.y);
         CGFloat x = MIN(MAX(0, targetTranslation.x), CGRectGetWidth(recognizer.view.frame)-5);
-        CGAffineTransform transform = CGAffineTransformMakeTranslation(x, 0);
-        self.view.transform = transform;
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(x*damper, 0);
+        panningView.transform = transform;
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
-       [UIView animateWithDuration:0.2
-                             delay:0.0
-                           options:UIViewAnimationOptionBeginFromCurrentState
-                        animations:^{
-                            self.view.transform = CGAffineTransformIdentity;
-                        }
-                        completion:^(BOOL finished) {
-                            self.leftEdgePanRecognizer.touchMargin = self.view.transform.tx + kLeftPanTouchMargin;
-                            self.bottomEdgePanRecognizer.enabled = YES;
-                        }];
-        
+        CGPoint currentTranslation = CGPointMake(panningView.transform.tx, panningView.transform.ty);
+        if (currentTranslation.x > 2./3.*CGRectGetWidth(self.view.frame)) {           
+            [UIView animateWithDuration:0.2
+                                  delay:0.0
+                                options:UIViewAnimationOptionBeginFromCurrentState
+                             animations:^{
+                                 CGAffineTransform fullRight = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.frame), 0);
+                                 panningView.transform = fullRight;
+                             }
+                             completion:^(BOOL finished) {
+                                 [self.navController popViewControllerAnimated:NO];
+                                 panningView.transform = CGAffineTransformIdentity;
+                                 
+                                 self.leftEdgePanRecognizer.touchMargin = kLeftPanTouchMargin;
+                                 self.bottomEdgePanRecognizer.enabled = YES;
+                             }];
+        } else {
+            [UIView animateWithDuration:0.2
+                                  delay:0.0
+                                options:UIViewAnimationOptionBeginFromCurrentState
+                             animations:^{
+                                 panningView.transform = CGAffineTransformIdentity;
+                             }
+                             completion:^(BOOL finished) {
+                                 self.leftEdgePanRecognizer.touchMargin = panningView.transform.tx + kLeftPanTouchMargin;
+                                 self.bottomEdgePanRecognizer.enabled = YES;
+                             }];
+        }
+    }
+}
+
+- (void)renderBackView
+{
+    NSUInteger count = self.navController.viewControllers.count;
+    if (count > 1) {
+//        NSUInteger penultimate = count - 2;
+//        UIViewController *penultimateController = self.navController.viewControllers[penultimate];
+//        
+//        CGSize size = penultimateController.view.frame.size;
+//        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+//        [penultimateController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        
+//        self.backView.image = image;
+        [self.backView removeFromSuperview];
+        [self.navController.view addSubview:self.backView];
+    } else {
+        [self.backView removeFromSuperview];
+        [self.navController.view addSubview:self.backView];
+    }
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (navigationController.topViewController == navigationController.viewControllers[0]) {
+        [self.backView setImage:nil];
+    } else {
+        CGSize size = navigationController.view.frame.size;
+        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+        [navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.backView.image = image;
     }
 }
 
