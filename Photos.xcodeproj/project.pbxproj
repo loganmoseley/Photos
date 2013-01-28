@@ -109,8 +109,8 @@
 		70E05E9616AD2B4300F1EC4E /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTGridLayoutSection.m; path = PSTCollectionView/PSTCollectionView/PSTGridLayoutSection.m; sourceTree = SOURCE_ROOT; };
 		70E05EC216ADE76500F1EC4E /* LMAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppViewController.h; sourceTree = "<group>"; };
 		70E05EC316ADE76500F1EC4E /* LMAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAppViewController.m; sourceTree = "<group>"; };
-		70E05EC516AE029C00F1EC4E /* LMEdgePanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEdgePanGestureRecognizer.h; sourceTree = "<group>"; };
-		70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEdgePanGestureRecognizer.m; sourceTree = "<group>"; };
+		70E05EC516AE029C00F1EC4E /* LMEdgePanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMEdgePanGestureRecognizer.h; path = EdgeGestures/LMEdgePanGestureRecognizer.h; sourceTree = SOURCE_ROOT; };
+		70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMEdgePanGestureRecognizer.m; path = EdgeGestures/LMEdgePanGestureRecognizer.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,14 +179,13 @@
 				70A549DC16AC9299009DC711 /* LMAppDelegate.m */,
 				70E05EC216ADE76500F1EC4E /* LMAppViewController.h */,
 				70E05EC316ADE76500F1EC4E /* LMAppViewController.m */,
-				70E05EC516AE029C00F1EC4E /* LMEdgePanGestureRecognizer.h */,
-				70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */,
 				70D9DE7C16AE69EC00F8DD69 /* LMScrollingTabBar.h */,
 				70D9DE7D16AE69EC00F8DD69 /* LMScrollingTabBar.m */,
 				70D9DE8316AE8D4100F8DD69 /* UIColor+LMStyling.h */,
 				70D9DE8416AE8D4100F8DD69 /* UIColor+LMStyling.m */,
 				70E05E7016AD027500F1EC4E /* Library browser */,
 				70E05EC116ADE72400F1EC4E /* Asset browser */,
+				70D10D3616B6701E0062617E /* Edge Gestures */,
 				70E05E7D16AD2B2A00F1EC4E /* PSTCollectionView */,
 				709159C516ACE2A9001B1BF8 /* Resources */,
 				70A549D316AC9299009DC711 /* Supporting Files */,
@@ -203,6 +202,15 @@
 				70A549DA16AC9299009DC711 /* Photos-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70D10D3616B6701E0062617E /* Edge Gestures */ = {
+			isa = PBXGroup;
+			children = (
+				70E05EC516AE029C00F1EC4E /* LMEdgePanGestureRecognizer.h */,
+				70E05EC616AE029C00F1EC4E /* LMEdgePanGestureRecognizer.m */,
+			);
+			name = "Edge Gestures";
 			sourceTree = "<group>";
 		};
 		70E05E7016AD027500F1EC4E /* Library browser */ = {

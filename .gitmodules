@@ -1,3 +1,6 @@
 [submodule "PSTCollectionView"]
 	path = PSTCollectionView
 	url = git@github.com:loganmoseley/PSTCollectionView.git
+[submodule "EdgeGestures"]
+	path = EdgeGestures
+	url = /Users/loganmoseley/Development/EdgeGestures
