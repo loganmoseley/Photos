@@ -11,11 +11,14 @@
 #import "UIColor+LMStyling.h"
 #import <QuartzCore/QuartzCore.h>
 
+static CGFloat kLeftPanTouchMargin = 20.f;
+
 @interface LMAppViewController ()
 @property (nonatomic, strong) UIView *mainView;
 @property (nonatomic, strong) LMScrollingTabBar *tabBar;
 @property (nonatomic, getter = isTabBarOpen) BOOL tabBarOpen;
-@property (nonatomic, weak) LMEdgePanGestureRecognizer *mainViewEdgePanRecognizer;
+@property (nonatomic, weak) LMEdgePanGestureRecognizer *bottomEdgePanRecognizer;
+@property (nonatomic, weak) LMEdgePanGestureRecognizer *leftEdgePanRecognizer;
 @property (nonatomic, weak) UITapGestureRecognizer *mainViewTapRecognizer;
 @end
 
@@ -37,7 +40,7 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     
     UIView *view = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = [UIColor offWhiteColor];
+    view.backgroundColor = [UIColor redColor];
     
     UIView *mainView = [[UIView alloc] initWithFrame:view.bounds];
     mainView.backgroundColor = nil;
@@ -92,10 +95,18 @@
         [self.mainView addSubview:self.selectedViewController.view];
     }
     
-    LMEdgePanGestureRecognizer *edgePan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewBottomEdgePan:)];
-    [edgePan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
-    [self.mainView addGestureRecognizer:edgePan];
-    self.mainViewEdgePanRecognizer = edgePan;
+    LMEdgePanGestureRecognizer *bottomEdgePan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewBottomEdgePan:)];
+    [bottomEdgePan setEdge:LMEdgePanGestureRecognizerEdgeBottom];
+    [bottomEdgePan setDelegate:self];
+    [self.mainView addGestureRecognizer:bottomEdgePan];
+    self.bottomEdgePanRecognizer = bottomEdgePan;
+    
+    LMEdgePanGestureRecognizer *leftEdgePan = [[LMEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewLeftEdgePan:)];
+    [leftEdgePan setEdge:LMEdgePanGestureRecognizerEdgeLeft];
+    [leftEdgePan setTouchMargin:kLeftPanTouchMargin];
+    [leftEdgePan setDelegate:self];
+    [self.view addGestureRecognizer:leftEdgePan];
+    self.leftEdgePanRecognizer = leftEdgePan;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMainViewTapped:)];
     [tap setEnabled:NO];
@@ -154,7 +165,9 @@
 
 
 
-#pragma mark - Pan gesture recognizer
+#pragma mark - Edge pan gestures
+
+#pragma mark -Bottom
 
 - (void)setTabBarOpen:(BOOL)tabBarOpen
 {
@@ -182,8 +195,9 @@
                          self.mainView.transform = CGAffineTransformMakeTranslation(0, -CGRectGetHeight(self.tabBar.frame));
                      }
                      completion:^(BOOL finished) {
-                         self.mainViewEdgePanRecognizer.touchMargin = CGRectGetHeight(self.mainViewEdgePanRecognizer.view.frame);
+                         self.bottomEdgePanRecognizer.touchMargin = CGRectGetHeight(self.bottomEdgePanRecognizer.view.frame);
                          self.mainViewTapRecognizer.enabled = YES;
+                         self.leftEdgePanRecognizer.enabled = NO;
                      }];
 }
 
@@ -196,22 +210,26 @@
                          self.mainView.transform = CGAffineTransformIdentity;
                      }
                      completion:^(BOOL finished) {
-                         self.mainViewEdgePanRecognizer.touchMargin = 20.;
+                         self.bottomEdgePanRecognizer.touchMargin = 20.;
                          self.mainViewTapRecognizer.enabled = NO;
+                         self.leftEdgePanRecognizer.enabled = YES;
                      }];
 }
 
 - (void)handleMainViewBottomEdgePan:(LMEdgePanGestureRecognizer *)recognizer
 {
     CGFloat kRevealHeight = CGRectGetHeight(self.tabBar.frame);
-    static CGPoint initialTranslation = {0,0};
+    static CGAffineTransform initialTransform;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         
-        initialTranslation = CGPointMake(self.mainView.transform.tx, self.mainView.transform.ty);
+        initialTransform = self.mainView.transform;
+        self.leftEdgePanRecognizer.enabled = NO;
+        self.leftEdgePanRecognizer.touchMargin = kLeftPanTouchMargin;
         
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         
+        CGPoint initialTranslation = CGPointMake(initialTransform.tx, initialTransform.ty);
         CGPoint translation = [recognizer translationInView:recognizer.view];
         CGPoint targetTranslation = CGPointMake(translation.x+initialTranslation.x, translation.y+initialTranslation.y);
         
@@ -259,6 +277,44 @@
 - (void)handleMainViewTapped:(UITapGestureRecognizer *)recognizer
 {
     [self setTabBarOpen:NO];
+}
+
+
+#pragma mark -Left
+
+- (void)handleMainViewLeftEdgePan:(LMEdgePanGestureRecognizer *)recognizer
+{    
+    static CGAffineTransform initialTransform;
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        initialTransform = self.mainView.transform;        
+        self.bottomEdgePanRecognizer.enabled = NO;
+        
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
+        CGPoint initialTranslation = CGPointMake(initialTransform.tx, initialTransform.ty);
+        CGPoint translation = [recognizer translationInView:recognizer.view];
+        CGPoint targetTranslation = CGPointMake(translation.x+initialTranslation.x, translation.y+initialTranslation.y);
+        CGFloat x = MIN(MAX(0, targetTranslation.x), CGRectGetWidth(recognizer.view.frame)-5);
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(x, 0);
+        self.mainView.transform = transform;
+        
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        
+//       [UIView animateWithDuration:0.2
+//                             delay:0.0
+//                           options:UIViewAnimationOptionBeginFromCurrentState
+//                        animations:^{
+//                            self.mainView.transform = CGAffineTransformIdentity;
+//                        }
+//                        completion:^(BOOL finished) {
+//                            self.mainViewBottomEdgePanRecognizer.enabled = YES;
+//                        }];
+        self.leftEdgePanRecognizer.touchMargin = self.mainView.transform.tx + kLeftPanTouchMargin;
+        self.bottomEdgePanRecognizer.enabled = YES;
+        
+    }
 }
 
 
